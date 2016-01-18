@@ -186,13 +186,14 @@ header .box .text-go-blog .arrow span {
     padding-left: 100px;
     text-indent: 2em;
     line-height: 24px;
-    cursor: pointer;
+    font-size: 18px;
+    
 }
 
-#content article .art-list ul li:hover span {
+#content article .art-list ul li span:hover {
     /*text-decoration: underline;*/
     border-bottom: 2px solid #eaeaea;
-    color: #51aded;
+    color: #51aded;cursor: pointer;
     /*color: #000*/
 }
 #content article .art-list ul li span {
