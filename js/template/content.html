@@ -1,24 +1,21 @@
-
-
 <div class="content-top">
-    
-
 </div>
-
-
 <div class="content-header">
-     <div class="">
-         
-     </div>
-
+    <div class="">
+    </div>
+</div>
+<div class="content-box"  style="overflow-y: hidden">
+    <iframe id="iframe" src="./js/content_html/a.html"  width="100%"></iframe>
 </div>
 
-
-<div class="content-box">
-
-      
-
-</div>
-
-
-
+<script type="text/javascript">
+$(document).ready(function() {
+            function fixHeight() {
+                // var headerHeight = $("#switcher").height();
+                $("#iframe").attr("height", $(window).height()+ "px");
+            }
+            $(window).resize(function() {
+                fixHeight();
+            }).resize();
+  });
+</script>

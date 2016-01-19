@@ -3,8 +3,8 @@
 
 
 
-    bookStoreCtrls.controller('indexCtrl', ['$scope',
-        function($scope) {
+    bookStoreCtrls.controller('indexCtrl', ['$scope', '$location',
+        function($scope, $location) {
 
 
             $scope.greeting = {
@@ -110,7 +110,118 @@
                     title: "CSS的尺寸单位(px,rem,vm)",
                     tags: ["CSS"]
                 }]
-            }]
+            }, {
+                time: "<p>01<span>㊊</span>~04<span>㊊</span></p>/2015",
+                cells: [{
+                    title: "http 304",
+                    tags: ["Javascript", "浏览器"]
+                }, {
+                    title: "UI界面尺寸",
+                    tags: ["UI"]
+                }, {
+                    title: "从交互到产品",
+                    tags: ["产品", "交互"]
+                }, {
+                    title: "H5 App太强！要降薪的恐怕不只是iOS程序员",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "D3C3-数据可视化",
+                    tags: ["Javascript", "Webapp", "数据可视化"]
+                }, {
+                    title: "svg canvas 的样式",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "CSS的尺寸单位(px,rem,vm)",
+                    tags: ["CSS"]
+                }]
+            }, {
+                time: "<p>全<span>㊊</span></p>/2014",
+                cells: [{
+                    title: "http 304",
+                    tags: ["Javascript", "浏览器"]
+                }, {
+                    title: "UI界面尺寸",
+                    tags: ["UI"]
+                }, {
+                    title: "从交互到产品",
+                    tags: ["产品", "交互"]
+                }, {
+                    title: "H5 App太强！要降薪的恐怕不只是iOS程序员",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "D3C3-数据可视化",
+                    tags: ["Javascript", "Webapp", "数据可视化"]
+                }, {
+                    title: "svg canvas 的样式",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "CSS的尺寸单位(px,rem,vm)",
+                    tags: ["CSS"]
+                },{
+                    title: "http 304",
+                    tags: ["Javascript", "浏览器"]
+                }, {
+                    title: "UI界面尺寸",
+                    tags: ["UI"]
+                }, {
+                    title: "从交互到产品",
+                    tags: ["产品", "交互"]
+                }, {
+                    title: "H5 App太强！要降薪的恐怕不只是iOS程序员",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "D3C3-数据可视化",
+                    tags: ["Javascript", "Webapp", "数据可视化"]
+                }, {
+                    title: "svg canvas 的样式",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "CSS的尺寸单位(px,rem,vm)",
+                    tags: ["CSS"]
+                },{
+                    title: "http 304",
+                    tags: ["Javascript", "浏览器"]
+                }, {
+                    title: "UI界面尺寸",
+                    tags: ["UI"]
+                }, {
+                    title: "从交互到产品",
+                    tags: ["产品", "交互"]
+                }, {
+                    title: "H5 App太强！要降薪的恐怕不只是iOS程序员",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "D3C3-数据可视化",
+                    tags: ["Javascript", "Webapp", "数据可视化"]
+                }, {
+                    title: "svg canvas 的样式",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "CSS的尺寸单位(px,rem,vm)",
+                    tags: ["CSS"]
+                },{
+                    title: "http 304",
+                    tags: ["Javascript", "浏览器"]
+                }, {
+                    title: "UI界面尺寸",
+                    tags: ["UI"]
+                }, {
+                    title: "从交互到产品",
+                    tags: ["产品", "交互"]
+                }, {
+                    title: "H5 App太强！要降薪的恐怕不只是iOS程序员",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "D3C3-数据可视化",
+                    tags: ["Javascript", "Webapp", "数据可视化"]
+                }, {
+                    title: "svg canvas 的样式",
+                    tags: ["Javascript", "Webapp", "H5"]
+                }, {
+                    title: "CSS的尺寸单位(px,rem,vm)",
+                    tags: ["CSS"]
+                }]
+            }];
 
             var h = $(window).height();
             $("header,header .box").height(h + 'px')
@@ -121,6 +232,13 @@
             });
 
             $("#loading").hide()
+            $('body').removeClass("page-content")
+
+            $('.art-list').on('click','[nav-to]', function(){
+                $location.path('/content/3333');//设置路由地址
+                console.log(344)
+            })
+
 
         }
 
@@ -134,6 +252,19 @@
 
     bookStoreCtrls.controller('contentCtrl', ['$scope', '$routeParams', '$location',
         function($scope, $routeParams, $location) {
+
+
+            // $(document).ready(function() {
+            // function fixHeight() {
+            //     // var headerHeight = $("#switcher").height();
+            //     $("#iframe").attr("height", $(window).height() - 54 + "px");
+            // }
+            // $(window).resize(function() {
+            //     fixHeight();
+            // }).resize();
+            
+
+            $('body').addClass("page-content")
 
 
 

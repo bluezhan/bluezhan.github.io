@@ -26,12 +26,12 @@
         X
     </div>
     <div class="art-list">
-        <div ng-repeat="list in lists">
+        <div ng-repeat="list in lists"> 
             <div class="time-line" ng-bind-html="list.time|to_trusted ">
             </div>
             <ul>
                 <li ng-repeat="cell in list.cells">
-                    《<p>{{cell.title}}</p>》
+                    《<p nav-to="/content/{{cell.title}}">{{cell.title}}</p>》
                     <div>
                        Tag:
                        <span title="{{tag}}" ng-repeat="tag in cell.tags">&nbsp;{{tag}}&nbsp;</span>
