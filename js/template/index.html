@@ -30,127 +30,17 @@
             <div class="time-line" ng-bind-html="list.time|to_trusted ">
             </div>
             <ul>
-                <li ng-repeat="cell in list.cells">《
-                    <p>{{cell.title}}</p>》
+                <li ng-repeat="cell in list.cells">
+                    《<p>{{cell.title}}</p>》
                     <div>
-                       Tag：
-                       <span  ng-repeat="tag in cell.tags">{{tag}},</span>
+                       Tag:
+                       <span title="{{tag}}" ng-repeat="tag in cell.tags">&nbsp;{{tag}}&nbsp;</span>
                     </div>
                 </li>
             </ul>
         </div>
-
-<!-- 
-        <div>2
-            <div class="time-line">
-                <p>01<span>㊊</span>~~<span></span></p>/2016
-
-            </div>
-            <ul>
-                <li>《
-                    <p>学会说人话！8个文案改进方法帮你快速提高用户体验</p>》
-                    <div>Tag：<span>javascript</span>,<span>webapp</span>,<span>浏览器</span></div>
-                </li>
-                <li>《<p>教父级色彩！一组黑白灰的低调大气范网站设计</p>》
-                <div>Tag: <span>Javascript</span>,<span>Webapp</span>,<span>浏览器</span></div></li>
-                <li>《<span>五一标配教程单身篇！一个人旅行应该怎样自拍？</span>》</li>
-            </ul>
-        </div>
-
-
-        <div>
-            <div class="time-line">
-                <p>12<span>㊊</span></p>/2015</div>
-            <ul>
-                <li>《<span>JavaScript的语言设计有哪些缺陷？</span>》</li>
-                <li>《<span>好好谈谈正则表达式</span>》</li>
-                <li>《<span>我是这样就使用了TypeScript</span>》</li>
-                <li>《<span></span>》</li>
-            </ul>
-        </div>
-        <div>
-            <div class="time-line">
-                <p>09<span>㊊</span>~11<span>㊊</span></p>/2015</div>
-            <ul>
-                <li>《<span>移动前端不得不了解的html5的head头标签</span>》</li>
-                <li>《<span>H5操作探险~~</span>》</li>
-                <li>《<span>浓缩的精华！从零开始带你认识最新的图片格式webp</span>》</li>
-                <li>《<span>注意了，select标签是有生命周期的</span>》</li>
-                <li>《<span>HTMl5的存储方式sessionStorage和localStorage详解</span>》</li>
-                <li>《<span>HTMl5的离线缓存(manifest)处理方式</span>》</li>
-                <li>《<span>百度，淘宝，腾讯三大巨头HTML页面规范分解</span>》</li>
-                <li>《<span>移动端百度，淘宝，腾讯，搜狐HTML页面规范分解</span>》</li>
-            </ul>
-        </div>
-        <div>
-            <div class="time-line">
-                <p>04<span>㊊</span>~08<span>㊊</span></p>/2015</div>
-            <ul>
-                <li>《<span>CSS关于元素垂直居中的问题</span>》</li>
-                <li>《<span>解决Chrome谷歌浏览器不支持CSS设置小于12px的文字</span>》</li>
-                <li>《<span>10个CSS简写/优化技巧</span>》</li>
-                <li>《<span>CSS兼容性详解</span>》</li>
-                <li>《<span>CSS的一些技巧</span>》</li>
-                <li>《<span>CSS的尺寸单位(px,rem,vm)</span>》</li>
-                <li>《<span>svg canvas 的样式</span>》</li>
-                <li>《<span>CSS兼容性详解</span>》</li>
-                <li>《<span>CSS兼容性详解</span>》</li>
-                <li>《<span>CSS兼容性详解</span>》</li>
-            </ul>
-        </div>
-        <div>
-            <div class="time-line">
-                <p>01<span>㊊</span>~03<span>㊊</span></p>/2015</div>
-            <ul>
-                <li>《<span>为什么干掉IE</span>》</li>
-                <li>《<span>优化网站的访问速度</span>》</li>
-                <li>《<span>从交互到产品</span>》</li>
-                <li>《<span>模板引擎</span>》</li>
-                <li>《<span>命名</span>》</li>
-                <li>《<span>《谈谈webAPP单页面框架》</span>》</li>
-                <li>《<span>《D3C3-数据可视化》</span>》</li>
-                <li>《<span>无线性能优化：FPS 测试</span>》</li>
-                <li>《<span>函数前的 ";""!""+"</span>》</li>
-                <li>《<span>web前端开发规范和整理</span>》</li>
-                <li>《<span>JavaScript糟粕和鸡肋</span>》</li>
-            </ul>
-        </div>
-        <div>
-            <div class="time-line">
-                <p>全<span>㊊</span></p>/2014</div>
-            <ul>
-                <li>《<span>http 304</span>》</li>
-                <li>《<span>教父级色彩！一组黑白灰的低调大气范网站设计</span>》</li>
-                <li>《<span>五一标配教程单身篇！一个人旅行应该怎样自拍？</span>》</li>
-            </ul>
-        </div>
-        <div>
-            <p class="time-line"><span>UI设计</span></p>
-            <ul>
-                <li>《<span>UI界面尺寸</span>》</li>
-                <li>《<span>教父级色彩！一组黑白灰的低调大气范网站设计</span>》</li>
-                <li>《<span>五一标配教程单身篇！一个人旅行应该怎样自拍？</span>》</li>
-            </ul>
-        </div>
-        <div>
-            <p class="time-line"><span>APP.webapp.hybridapp</span></p>
-            <ul>
-                <li>《<span>H5 App太强！要降薪的恐怕不只是iOS程序员</span>》</li>
-                <li>《<span>教父级色彩！一组黑白灰的低调大气范网站设计</span>》</li>
-                <li>《<span>五一标配教程单身篇！一个人旅行应该怎样自拍？</span>》</li>
-            </ul>
-        </div>
-        <div>
-            <p class="time-line"><span>书籍</span></p>
-            <ul>
-                <li>《<span>学会说人话！8个文案改进方法帮你快速提高用户体验</span>》</li>
-                <li>《<span>教父级色彩！一组黑白灰的低调大气范网站设计</span>》</li>
-                <li>《<span>五一标配教程单身篇！一个人旅行应该怎样自拍？</span>》</li>
-            </ul>
-        </div> -->
-        <!-- Copyrights © 2016 Bluezhan' Blog™, All Rights Reserved. -->
     </div>
 </article>
 <footer>
-    Copyrights © 2016 <a href="www.mynameisblue.com">Bluezhan</a>' Blog™, All Rights Reserved.
+    Copyrights © 2016 <a href="http://www.mynameisblue.com" target="_blank">Bluezhan</a>' Blog™, All Rights Reserved.
 </footer>

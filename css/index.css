@@ -128,6 +128,12 @@ header .box .text-go-blog .arrow span {
     /* Opera */
 }
 
+#content {
+
+
+    
+}
+
 #content article {
     position: relative;
     width: 100%;
@@ -232,6 +238,8 @@ header .box .text-go-blog .arrow span {
     display: inline-block;
     border-bottom: 1px solid rgba(22, 22, 22, 0);
     /*font-style: italic;*/
+    font-size: 12px;
+    line-height: 100%;
 }
 
 #content article .art-list ul li div span:hover {
@@ -243,8 +251,8 @@ footer {
     text-align: center;
     font-size: 15px;
     margin-bottom: 30px;
-    color: #666;
+    color: #999;
 }
 footer a {
-        color: #fb8600;
+    color: #fb8600;
 }
