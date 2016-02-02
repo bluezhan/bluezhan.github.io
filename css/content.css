@@ -1,9 +1,137 @@
 
 .content-box {
-	height: 100%; overflow: visible; position: relative;
+	/*height: 100%; overflow: visible; position: relative;*/
+        width: 1000px;
+    margin: 0 auto;
 }
 #iframe { margin-top: 0 }
 
 .page-content {
 	/*overflow-y: hidden;*/
 }
+
+
+/*content css*/
+
+/**, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    outline: none !important;
+}
+ul, ol {
+    margin-bottom: 1.1em;
+}
+.note-content ul {
+    line-height: 1.6;
+}
+
+a {
+    background: transparent;
+}
+a {
+    color: #1980e6;
+    text-decoration: none;
+}
+a {
+    -webkit-transition: background-color ease-in-out .15s, color ease-in-out .15s, border-color ease-in-out .15s;
+    transition: background-color ease-in-out .15s, color ease-in-out .15s, border-color ease-in-out .15s;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: inherit;
+    font-weight: 300;
+    line-height: 1.1;
+    color: inherit;
+}
+h1, h2, h3 {
+    margin-top: 21px;
+    margin-bottom: 10.5px;
+}
+h2, .h2 {
+    font-size: 32px;
+}
+h2 {
+    font-size: 2.15em;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 1.8em 0;
+    text-align: start;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    margin: 1.2em 0 .6em 0;
+}
+
+p {
+    margin: 0 0 10.5px;
+}
+
+p, pre, pre.prettyprint, blockquote {
+    margin: 0 0 1.1em;
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+hr {
+    margin-top: 21px;
+    margin-bottom: 21px;
+    border: 0;
+    border-top: 1px solid rgba(102,128,153,0.1);
+}
+
+hr {
+    margin: 2em 0;
+}
+
+img {
+    border: 0;
+}
+img {
+    vertical-align: middle;
+}
+img {
+    max-width: 100%;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+blockquote {
+    padding: 10.5px 21px;
+    margin: 0 0 21px;
+    border-left: 5px solid rgba(102,128,153,0.075);
+}
+
+blockquote {
+    border-left-width: 10px;
+    background-color: rgba(102,128,153,0.05);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 15px 20px;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

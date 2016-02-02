@@ -1,21 +1,309 @@
+<style type="text/css">
+@import url(../../css/marxico.css);
+@import url(../css/content.css);
+</style>
+
+<p>You are here: <a href="index.html">Home</a> <span class="u triangularBullet"></span> <a href="table-of-contents.html#history">Dive Into <abbr>HTML5</abbr></a> <span class="u triangularBullet"></span>
+</p>
 <div class="content-top">
 </div>
 <div class="content-header">
     <div class="">
     </div>
 </div>
-<div class="content-box"  style="overflow-y: hidden">
-    <iframe id="iframe" src="./js/content_html/a.html"  width="100%"></iframe>
+<div class="content-box">
+    <div id="preview-contents" class="note-content" style="padding-left: 35px; padding-right: 35px; padding-bottom: 283px;">
+        <div id="wmd-preview" class="preview-content"></div>
+        <div id="wmd-preview-section-231" class="wmd-preview-section preview-content">
+        </div>
+        <div id="wmd-preview-section-748" class="wmd-preview-section preview-content">
+            <h1 id="学习示例angularjs-nodejs-和-typescript">学习示例：AngularJS, NodeJS, 和 Typescript-</h1>
+            <p>
+                <p class="note-tags "><code class="notebook">笔记本</code> <code>TypeScript</code> <code>AngularJS</code> <code>Markdown</code> </p>
+            </p>
+            <p><strong>马克飞象</strong>是一款专为印象笔记（Evernote）打造的Markdown编辑器，通过精心的设计与技术实现，配合印象笔记强大的存储和同步功能，带来前所未有的书写体验。特点概述：</p>
+            <ul>
+                <li><strong>功能丰富</strong> ：支持高亮代码块、<em>LaTeX</em> 公式、流程图，本地图片以及附件上传，甚至截图粘贴，工作学习好帮手；</li>
+                <li><strong>得心应手</strong> ：简洁高效的编辑器，提供<a href="http://maxiang.info/client_zh" target="_blank">桌面客户端</a>以及<a href="https://chrome.google.com/webstore/detail/kidnkfckhbdkfgbicccmdggmpgogehop" target="_blank">离线Chrome App</a>，支持移动端 Web；</li>
+                <li><strong>深度整合</strong> ：支持选择笔记本和添加标签，支持从印象笔记跳转编辑，轻松管理。</li>
+            </ul>
+            <hr>
+            <p>
+                <div class="toc">
+                    <div class="toc">
+                        <ul>
+                            <li><a href="#学习示例angularjs-nodejs-和-typescript">学习示例：AngularJS, NodeJS, 和 Typescript-</a>
+                                <ul>
+                                    <li><a href="#markdown简介">Markdown简介</a>
+                                        <ul>
+                                            <li><a href="#代码块">代码块</a></li>
+                                            <li><a href="#latex-公式">LaTeX 公式</a></li>
+                                            <li><a href="#表格">表格</a></li>
+                                            <li><a href="#流程图">流程图</a></li>
+                                            <li><a href="#复选框">复选框</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#印象笔记相关">印象笔记相关</a>
+                                        <ul>
+                                            <li><a href="#笔记本和标签">笔记本和标签</a></li>
+                                            <li><a href="#笔记标题">笔记标题</a></li>
+                                            <li><a href="#快捷编辑">快捷编辑</a></li>
+                                            <li><a href="#数据同步">数据同步</a></li>
+                                            <li><a href="#离线存储">离线存储</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#编辑器相关">编辑器相关</a>
+                                        <ul>
+                                            <li><a href="#设置">设置</a></li>
+                                            <li><a href="#快捷键">快捷键</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#关于试用">关于试用</a></li>
+                                    <li><a href="#反馈与建议">反馈与建议</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </p>
+        </div>
+        <div id="wmd-preview-section-581" class="wmd-preview-section preview-content">
+            <h2 id="markdown简介">Markdown简介</h2>
+            <blockquote>
+                <p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。 —— <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank">维基百科</a></p>
+            </blockquote>
+            <p>正如您在阅读的这份文档，它使用简单的符号标识不同的标题，将某些文字标记为<strong>粗体</strong>或者<em>斜体</em>，创建一个<a href="http://www.example.com" target="_blank">链接</a>或一个脚注<a href="#fn:demo" id="fnref:demo" title="See footnote" class="footnote">1</a>。下面列举了几个高级功能，更多语法请按<code>Ctrl + /</code>查看帮助。 </p>
+        </div>
+        <div id="wmd-preview-section-582" class="wmd-preview-section preview-content">
+            <h3 id="代码块">代码块</h3>
+        </div>
+        <div id="wmd-preview-section-583" class="wmd-preview-section preview-content">
+            <pre class="prettyprint hljs-dark"><code class="language-python hljs"><span class="hljs-comment line-number">1.</span><span class="hljs-decorator">@requires_authorization</span><br><span class="hljs-comment line-number">2.</span><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">somefunc</span><span class="hljs-params">(param1=<span class="hljs-string">''</span>, param2=<span class="hljs-number">0</span>)</span>:</span><br><span class="hljs-comment line-number">3.</span>    <span class="hljs-string">'''A docstring'''</span><br><span class="hljs-comment line-number">4.</span>    <span class="hljs-keyword">if</span> param1 &gt; param2: <span class="hljs-comment"># interesting</span><br><span class="hljs-comment line-number">5.</span>        <span class="hljs-keyword">print</span> <span class="hljs-string">'Greater'</span><br><span class="hljs-comment line-number">6.</span>    <span class="hljs-keyword">return</span> (param2 - param1 + <span class="hljs-number">1</span>) <span class="hljs-keyword">or</span> <span class="hljs-keyword">None</span><br><span class="hljs-comment line-number">7.</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SomeClass</span>:</span><br><span class="hljs-comment line-number">8.</span>    <span class="hljs-keyword">pass</span><br><span class="hljs-comment line-number">9.</span><span class="hljs-prompt">&gt;&gt;&gt; </span>message = <span class="hljs-string">'''interpreter<br><span class="hljs-comment line-number">10.</span><span class="hljs-prompt">... </span>prompt'''</span><br></code></pre>
+        </div>
+        <div id="wmd-preview-section-584" class="wmd-preview-section preview-content">
+            <h3 id="latex-公式">LaTeX 公式</h3>
+            <p>可以创建行内公式，例如 <span xmlns="http://www.w3.org/1999/xhtml" class="" rel="a5b96bf2d8bd9059bb958841ba3f2beb"><span class="MathJax_SVG" id="MathJax-Element-1-Frame" role="textbox" aria-readonly="true" style="font-size: 100%; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -705.2000693679926 10195.555555555555 911.4001387359851" style="width: 23.71ex; height: 2.056ex; vertical-align: -0.605ex; margin: 1px 0px;" width="196px" height="17px"><g stroke="black" fill="black" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-393"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-28" x="592" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-6E" x="930" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-29" x="1435" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-3D" x="2050" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-28" x="3018" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-6E" x="3356" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-2212" x="4083" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-31" x="4996" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-29" x="5501" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-21" x="5839" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-2200" x="7177" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-6E" x="7742" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-2208" x="8524" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBDOUBLESTRUCK-2115" x="9492" y="0"></use></g></svg></span></span>。或者块级公式：</p>
+        </div>
+        <div id="wmd-preview-section-585" class="wmd-preview-section preview-content">
+            <p></p>
+            <div xmlns="http://www.w3.org/1999/xhtml" class="" rel="b6e1e70c16ba5facfebcbc80ff514174">
+                <div class="MathJax_SVG_Display" role="textbox" aria-readonly="true" style="text-align: center;"><span class="MathJax_SVG" id="MathJax-Element-2-Frame" style="font-size: 100%; display: inline-block;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-22 -1801.4079322712182 8898.533368943652 2527.5590016392107" style="width: 20.685ex; height: 5.927ex; vertical-align: -1.815ex; margin: 1px 0px;" width="171px" height="49px"><g stroke="black" fill="black" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-78"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-3D" x="729" y="0"></use><g transform="translate(1697,0)"><g transform="translate(120,0)"><rect stroke="none" width="6938" height="60" x="0" y="220"></rect><g transform="translate(60,698)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-2212"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-62" x="690" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-B1" x="1417" y="0"></use><g transform="translate(2329,0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-221A" x="0" y="40"></use><rect stroke="none" width="3556" height="60" x="933" y="963"></rect><g transform="translate(933,0)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-62"></use><use transform="scale(0.7071067811865476)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-32" x="714" y="408"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-2212" x="1184" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-34" x="2096" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-61" x="2601" y="0"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-63" x="3107" y="0"></use></g></g></g><g transform="translate(2963,-686)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAIN-32"></use><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#STIXWEBMAINI-61" x="505" y="0"></use></g></g></g></g></svg></span></div>
+            </div>
+            <p></p>
+        </div>
+        <div id="wmd-preview-section-586" class="wmd-preview-section preview-content">
+            <h3 id="表格">表格</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th align="left">Item</th>
+                        <th align="right">Value</th>
+                        <th align="center">Qty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="left">Computer</td>
+                        <td align="right">1600 USD</td>
+                        <td align="center">5</td>
+                    </tr>
+                    <tr>
+                        <td align="left">Phone</td>
+                        <td align="right">12 USD</td>
+                        <td align="center">12</td>
+                    </tr>
+                    <tr>
+                        <td align="left">Pipe</td>
+                        <td align="right">1 USD</td>
+                        <td align="center">234</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="wmd-preview-section-587" class="wmd-preview-section preview-content">
+            <h3 id="流程图">流程图</h3>
+        </div>
+        <div id="wmd-preview-section-588" class="wmd-preview-section preview-content">
+            <div class="flow-chart" rel="3948551bcb3e561fe9d24798793a46ce">
+                <svg height="349.73828125" version="1.1" width="186.4765625" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.5px; top: -0.6875px;">
+                    <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
+                    <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                        <marker id="raphael-marker-endblock33" markerHeight="3" markerWidth="3" orient="auto" refX="1.5" refY="1.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#raphael-marker-block" transform="rotate(180 1.5 1.5) scale(0.6,0.6)" stroke-width="1.6667" fill="black" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></use>
+                        </marker>
+                    </defs>
+                    <rect x="0" y="0" width="52.21875" height="37" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="2" transform="matrix(1,0,0,1,54.6289,2)"></rect>
+                    <text x="10" y="18.5" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: sans-serif;" font-size="14px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,54.6289,2)">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Start</tspan>
+                    </text>
+                    <rect x="0" y="0" width="111.125" height="37" r="0" rx="0" ry="0" fill="#ffffff" stroke="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="2" transform="matrix(1,0,0,1,25.1758,91)"></rect>
+                    <text x="10" y="18.5" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: sans-serif;" font-size="14px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,25.1758,91)">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">My Operation</tspan>
+                    </text>
+                    <path fill="#ffffff" stroke="#000000" d="M39.369140625,19.6845703125L0,39.369140625L78.73828125,78.73828125L157.4765625,39.369140625L78.73828125,0L0,39.369140625" stroke-width="2" font-family="sans-serif" font-weight="normal" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: sans-serif; font-weight: normal;" transform="matrix(1,0,0,1,2,180)"></path>
+                    <text x="44.369140625" y="39.369140625" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: sans-serif;" font-size="14px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,2,180)">
+                        <tspan dy="5.509765625" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Yes or No?</tspan>
+                        <tspan dy="18" x="44.369140625" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></tspan>
+                    </text>
+                    <rect x="0" y="0" width="46.390625" height="37" r="20" rx="20" ry="20" fill="#ffffff" stroke="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);" stroke-width="2" transform="matrix(1,0,0,1,57.543,310.7383)"></rect>
+                    <text x="10" y="18.5" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: sans-serif;" font-size="14px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,57.543,310.7383)">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">End</tspan>
+                    </text>
+                    <path fill="none" stroke="#000000" d="M80.73828125,39C80.73828125,39,80.73828125,76.92477893829346,80.73828125,87.99851810093969" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" font-family="sans-serif" font-weight="normal" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: sans-serif; font-weight: normal;"></path>
+                    <path fill="none" stroke="#000000" d="M80.73828125,128C80.73828125,128,80.73828125,165.92477893829346,80.73828125,176.9985181009397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" font-family="sans-serif" font-weight="normal" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: sans-serif; font-weight: normal;"></path>
+                    <path fill="none" stroke="#000000" d="M80.73828125,258.73828125C80.73828125,258.73828125,80.73828125,296.66306018829346,80.73828125,307.7367993509397" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" font-family="sans-serif" font-weight="normal" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: sans-serif; font-weight: normal;"></path>
+                    <text x="85.73828125" y="268.73828125" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: sans-serif;" font-size="14px" font-family="sans-serif" font-weight="normal">
+                        <tspan dy="5.50390625" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">yes</tspan>
+                    </text>
+                    <path fill="none" stroke="#000000" d="M159.4765625,219.369140625C159.4765625,219.369140625,184.4765625,219.369140625,184.4765625,219.369140625C184.4765625,219.369140625,184.4765625,66,184.4765625,66C184.4765625,66,80.73828125,66,80.73828125,66C80.73828125,66,80.73828125,81.37344455718994,80.73828125,88.00924777425826" stroke-width="2" marker-end="url(#raphael-marker-endblock33)" font-family="sans-serif" font-weight="normal" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: sans-serif; font-weight: normal;"></path>
+                    <text x="164.4765625" y="209.369140625" text-anchor="start" font="10px &quot;Arial&quot;" stroke="#000000" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: start; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: sans-serif;" font-size="14px" font-family="sans-serif" font-weight="normal">
+                        <tspan dy="5.509765625" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">no</tspan>
+                    </text>
+                </svg>
+            </div>
+            <p>以及时序图:</p>
+        </div>
+        <div id="wmd-preview-section-589" class="wmd-preview-section preview-content">
+            <div class="sequence-diagram" rel="9770c7c1a2318ca92066a6342c1a6b0c">
+                <svg height="255" version="1.1" width="397.078125" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative; left: -0.25px; top: -0.109375px;">
+                    <desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc>
+                    <defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                        <marker id="raphael-marker-endblock55" markerHeight="5" markerWidth="5" orient="auto" refX="2.5" refY="2.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#raphael-marker-block" transform="rotate(180 2.5 2.5) scale(1,1)" stroke-width="1.0000" fill="#000" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></use>
+                        </marker>
+                    </defs>
+                    <rect x="10" y="20" width="52.484375" height="37" r="0" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <rect x="19.984375" y="30" width="32.484375" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="36.2421875" y="38.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Alice</tspan>
+                    </text>
+                    <rect x="10" y="198" width="52.484375" height="37" r="0" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <rect x="19.984375" y="208" width="32.484375" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="36.2421875" y="216.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Alice</tspan>
+                    </text>
+                    <path fill="none" stroke="#000000" d="M36.2421875,57L36.2421875,198" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    <rect x="197.34375" y="20" width="47.765625" height="37" r="0" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <rect x="207.328125" y="30" width="27.765625" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="221.2265625" y="38.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Bob</tspan>
+                    </text>
+                    <rect x="197.34375" y="198" width="47.765625" height="37" r="0" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <rect x="207.328125" y="208" width="27.765625" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="221.2265625" y="216.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Bob</tspan>
+                    </text>
+                    <path fill="none" stroke="#000000" d="M221.2265625,57L221.2265625,198" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    <rect x="46.234375" y="73.5" width="164.984375" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="128.734375" y="82" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Hello Bob, how are you?</tspan>
+                    </text>
+                    <path fill="none" stroke="#000000" d="M36.2421875,94C36.2421875,94,186.69798701629043,94,216.23081485103103,94" stroke-width="2" marker-end="url(#raphael-marker-endblock55)" stroke-dasharray="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    <rect x="241.2265625" y="114" width="81.96875" height="27" r="0" rx="0" ry="0" fill="none" stroke="#000000" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <rect x="246.21875" y="119" width="71.96875" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="282.2109375" y="127.5" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Bob thinks</tspan>
+                    </text>
+                    <rect x="68.421875" y="157.5" width="120.59375" height="17" r="0" rx="0" ry="0" fill="#ffffff" stroke="none" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+                    <text x="128.734375" y="166" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#000000" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 16px; line-height: normal; font-family: 'Andale Mono', monospace;" font-size="16px" font-family="Andale Mono, monospace">
+                        <tspan dy="5.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">I am good thanks!</tspan>
+                    </text>
+                    <path fill="none" stroke="#000000" d="M221.2265625,178C221.2265625,178,70.77076298370957,178,41.23793514896897,178" stroke-width="2" marker-end="url(#raphael-marker-endblock55)" stroke-dasharray="6,2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                </svg>
+            </div>
+            <blockquote>
+                <p><strong>提示：</strong>想了解更多，请查看<strong>流程图</strong><a href="http://adrai.github.io/flowchart.js/" target="_blank">语法</a>以及<strong>时序图</strong><a href="http://bramp.github.io/js-sequence-diagrams/" target="_blank">语法</a>。</p>
+            </blockquote>
+        </div>
+        <div id="wmd-preview-section-12" class="wmd-preview-section preview-content">
+            <h3 id="复选框">复选框</h3>
+            <p>使用 <code>- [ ]</code> 和 <code>- [x]</code> 语法可以创建复选框，实现 todo-list 等功能。例如：</p>
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" checked="checked"> 已完成事项</div>
+                <div class="checklist-item">
+                    <input type="checkbox"> 待办事项1</div>
+                <div class="checklist-item">
+                    <input type="checkbox"> 待办事项2</div>
+            </div>
+            <blockquote>
+                <p><strong>注意：</strong>目前支持尚不完全，在印象笔记中勾选复选框是无效、不能同步的，所以必须在<strong>马克飞象</strong>中修改 Markdown 原文才可生效。下个版本将会全面支持。</p>
+            </blockquote>
+        </div>
+        <div id="wmd-preview-section-13" class="wmd-preview-section preview-content">
+            <h2 id="印象笔记相关">印象笔记相关</h2>
+        </div>
+        <div id="wmd-preview-section-14" class="wmd-preview-section preview-content">
+            <h3 id="笔记本和标签">笔记本和标签</h3>
+            <p><strong>马克飞象</strong>增加了<code>@(笔记本)[标签A|标签B]</code>语法, 以选择笔记本和添加标签。 <strong>绑定账号后</strong>， 输入<code>(</code>自动会出现笔记本列表，请从中选择。</p>
+        </div>
+        <div id="wmd-preview-section-15" class="wmd-preview-section preview-content">
+            <h3 id="笔记标题">笔记标题</h3>
+            <p><strong>马克飞象</strong>会自动使用文档内出现的第一个标题作为笔记标题。例如本文，就是第一行的 <code>欢迎使用马克飞象</code>。</p>
+        </div>
+        <div id="wmd-preview-section-16" class="wmd-preview-section preview-content">
+            <h3 id="快捷编辑">快捷编辑</h3>
+            <p>保存在印象笔记中的笔记，右上角会有一个红色的编辑按钮，点击后会回到<strong>马克飞象</strong>中打开并编辑该笔记。</p>
+            <blockquote>
+                <p><strong>注意：</strong>目前用户在印象笔记中单方面做的任何修改，马克飞象是无法自动感知和更新的。所以请务必回到马克飞象编辑。</p>
+            </blockquote>
+        </div>
+        <div id="wmd-preview-section-17" class="wmd-preview-section preview-content">
+            <h3 id="数据同步">数据同步</h3>
+            <p><strong>马克飞象</strong>通过<strong>将Markdown原文以隐藏内容保存在笔记中</strong>的精妙设计，实现了对Markdown的存储和再次编辑。既解决了其他产品只是单向导出HTML的单薄，又规避了服务端存储Markdown带来的隐私安全问题。这样，服务端仅作为对印象笔记 API调用和数据转换之用。</p>
+            <blockquote>
+                <p><strong>隐私声明：用户所有的笔记数据，均保存在印象笔记中。马克飞象不存储用户的任何笔记数据。</strong></p>
+            </blockquote>
+        </div>
+        <div id="wmd-preview-section-18" class="wmd-preview-section preview-content">
+            <h3 id="离线存储">离线存储</h3>
+            <p><strong>马克飞象</strong>使用浏览器离线存储将内容实时保存在本地，不必担心网络断掉或浏览器崩溃。为了节省空间和避免冲突，已同步至印象笔记并且不再修改的笔记将删除部分本地缓存，不过依然可以随时通过<code>文档管理</code>打开。</p>
+            <blockquote>
+                <p><strong>注意：</strong>虽然浏览器存储大部分时候都比较可靠，但印象笔记作为专业云存储，更值得信赖。以防万一，<strong>请务必经常及时同步到印象笔记</strong>。</p>
+            </blockquote>
+        </div>
+        <div id="wmd-preview-section-19" class="wmd-preview-section preview-content">
+            <h2 id="编辑器相关">编辑器相关</h2>
+        </div>
+        <div id="wmd-preview-section-20" class="wmd-preview-section preview-content">
+            <h3 id="设置">设置</h3>
+            <p>右侧系统菜单（快捷键<code>Ctrl + M</code>）的<code>设置</code>中，提供了界面字体、字号、自定义CSS、vim/emacs 键盘模式等高级选项。</p>
+        </div>
+        <div id="wmd-preview-section-21" class="wmd-preview-section preview-content">
+            <h3 id="快捷键">快捷键</h3>
+            <p>帮助 <code>Ctrl + /</code>
+                <br> 同步文档 <code>Ctrl + S</code>
+                <br> 创建文档 <code>Ctrl + Alt + N</code>
+                <br> 最大化编辑器 <code>Ctrl + Enter</code>
+                <br> 预览文档 <code>Ctrl + Alt + Enter</code>
+                <br> 文档管理 <code>Ctrl + O</code>
+                <br> 系统菜单 <code>Ctrl + M</code> </p>
+            <p>加粗 <code>Ctrl + B</code>
+                <br> 插入图片 <code>Ctrl + G</code>
+                <br> 插入链接 <code>Ctrl + L</code>
+                <br> 提升标题 <code>Ctrl + H</code></p>
+        </div>
+        <div id="wmd-preview-section-22" class="wmd-preview-section preview-content">
+            <h2 id="关于试用">关于试用</h2>
+            <p><strong>马克飞象</strong>为新用户提供 10 天的试用期，试用期过后将不能同步新的笔记。之前保存过的笔记依然可以编辑。</p>
+        </div>
+        <div id="wmd-preview-section-23" class="wmd-preview-section preview-content">
+            <h2 id="反馈与建议">反馈与建议</h2>
+            <ul>
+                <li>微博：<a href="http://weibo.com/u/2788354117" target="_blank">@马克飞象</a>，<a href="http://weibo.com/ggock" title="开发者个人账号" target="_blank">@GGock</a></li>
+                <li>邮箱：<a href="mailto:hustgock@gmail.com" target="_blank">hustgock@gmail.com</a></li>
+            </ul>
+            <hr>
+            <p>感谢阅读这份帮助文档。请点击右上角，绑定印象笔记账号，开启全新的记录与分享体验吧。</p>
+        </div>
+        <div id="wmd-preview-section-footnotes" class="preview-content">
+            <div class="footnotes">
+                <hr>
+                <ol>
+                    <li id="fn:demo">这是一个示例脚注。请查阅 <a href="https://github.com/fletcher/MultiMarkdown/wiki/MultiMarkdown-Syntax-Guide#footnotes" target="_blank">MultiMarkdown 文档</a> 关于脚注的说明。 <strong>限制：</strong> 印象笔记的笔记内容使用 <a href="https://dev.yinxiang.com/doc/articles/enml.php" target="_blank">ENML</a> 格式，基于 HTML，但是不支持某些标签和属性，例如id，这就导致<code>脚注</code>和<code>TOC</code>无法正常点击。 <a href="#fnref:demo" title="Return to article" class="reversefootnote">↩</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function() {
-            function fixHeight() {
-                // var headerHeight = $("#switcher").height();
-                $("#iframe").attr("height", $(window).height()+ "px");
-            }
-            $(window).resize(function() {
-                fixHeight();
-            }).resize();
-  });
-</script>

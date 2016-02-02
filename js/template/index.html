@@ -1,3 +1,10 @@
+<style type="text/css">
+@import url(./css/global.css);
+
+/*@import url(./marxico.css);*/
+
+@import url(./css/index.css);
+</style>
 <!-- header -->
 <header>
     <div class="box">
@@ -25,20 +32,40 @@
     <div class="x-animate">
         X
     </div>
+    <div class="index-info">
+            <p>HTML5深入阐述了在一个精心挑选的选择特性从HTML5规范和其他标准。</p>
+            <p>我们鼓励您购买印刷工作——马克朝圣者的巧妙题为“HTML5:启动和运行”——在纸上发表的O ' reilly，谷歌新闻的印记。</p>
+            <p>你的善良和真诚的反馈总是受欢迎的，这项工作应保持在线cc -下- 3.0许可证。</p>
+            <p>这个特别版深入diveintomark HTML5是先进的团队。</p>
+            <p>我们努力工作来添加和更新内容，链接，api，并积极维护好资源;清爽反映HTML5的相关和当前状态，正如马克朝圣者在他的任期内所做的那样。</p>
+            <p>我们认为这项工作在马克所指定的方式，和我们修改网站的内容。</p>
+            <p>我们不以任何方式表明他支持我们或我们使用他的工作。</p>
+            <p>我们希望你能做到。</p>
+    </div>
     <div class="art-list">
-        <div ng-repeat="list in lists"> 
-            <div class="time-line" ng-bind-html="list.time|to_trusted ">
+        <div ng-repeat="list in lists">
+            <div class="time-line" ng-bind-html="list.time|to_trusted">
             </div>
             <ul>
                 <li ng-repeat="cell in list.cells">
-                    《<p nav-to="/content/{{cell.title}}">{{cell.title}}</p>》
-                    <div>
-                       Tag:
-                       <span title="{{tag}}" ng-repeat="tag in cell.tags">&nbsp;{{tag}}&nbsp;</span>
+                    <!-- 《 -->
+                    <p class="title" nav-to="/content/{{cell.title}}"><a ng-href="/content/33">{{cell.title}}</a></p>
+                    <!-- 》 -->
+                    <div class="tag-box">
+                        Tag:
+                        <span title="{{tag}}" ng-repeat="tag in cell.tags">&nbsp;{{tag}}&nbsp;</span>
+                    </div>
+                    <div class="summary">
+                         <p>Using the ~/.aws/credentials and ~/.aws/config files you may specify <code>AWS_PROFILE</code> to tell apex which one to reference. However, if you do not have a ~/.aws/config file, or “region” is not defined, you should set it with the <code>AWS_REGION</code> environment variable. To read more on configuring these files view <a href="">Configuring the AWS CLI</a>.</p>
+                         <p>Using the ~/.aws/credentials and ~/.aws/config files you may specify <code>AWS_PROFILE</code> to tell apex which one to reference. However, if you do not have a ~/.aws/config file, or “region” is not defined, you should set it with the <code>AWS_REGION</code> environment variable. To read more on configuring these files view <a href="">Configuring the AWS CLI</a>.</p>
                     </div>
                 </li>
             </ul>
         </div>
+    </div>
+    <div class="foorter-info">
+        
+        <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
     </div>
 </article>
 <footer>

@@ -14,6 +14,9 @@
             $scope.lists = [{
                 time: "<p>01<span>㊊</span>~~<span></span></p>/2016",
                 cells: [{
+                    title: "HTML5 Web 存储",
+                    tags: ["HTML5", "Javascript"]
+                }, {
                     title: "JavaScript的语言设计有哪些缺陷？",
                     tags: ["Javascript", "Webapp"]
                 }, {
@@ -25,6 +28,9 @@
                 }, {
                     title: "我是这样就使用了TypeScript",
                     tags: ["Javascript", "Webapp"]
+                }, {
+                    title: "JavaScript 资源大全中文版",
+                    tags: ["Javascript", "整理"]
                 }]
             }, {
                 time: "<p>12<span>㊊</span></p>/2015",
@@ -157,7 +163,7 @@
                 }, {
                     title: "CSS的尺寸单位(px,rem,vm)",
                     tags: ["CSS"]
-                },{
+                }, {
                     title: "http 304",
                     tags: ["Javascript", "浏览器"]
                 }, {
@@ -178,7 +184,7 @@
                 }, {
                     title: "CSS的尺寸单位(px,rem,vm)",
                     tags: ["CSS"]
-                },{
+                }, {
                     title: "http 304",
                     tags: ["Javascript", "浏览器"]
                 }, {
@@ -199,7 +205,7 @@
                 }, {
                     title: "CSS的尺寸单位(px,rem,vm)",
                     tags: ["CSS"]
-                },{
+                }, {
                     title: "http 304",
                     tags: ["Javascript", "浏览器"]
                 }, {
@@ -223,21 +229,24 @@
                 }]
             }];
 
-            var h = $(window).height();
-            $("header,header .box").height(h + 'px')
+            // var h = $(window).height();
+            // $("header,header .box").height(h + 'px')
 
-            $(window).resize(function() {
-                var h = $(window).height();
-                $("header,header .box").height(h + 'px')
-            });
+            // $(window).resize(function() {
+            //     var h = $(window).height();
+            //     $("header,header .box").height(h + 'px')
+            // });
 
             $("#loading").hide()
             $('body').removeClass("page-content")
 
-            $('.art-list').on('click','[nav-to]', function(){
-                $location.path('/content/3333');//设置路由地址
-                console.log(344)
-            })
+            $scope.$watch('locationPath', function(path) {
+                $location.path(path);
+            });
+
+            $scope.$watch('$location.path()', function(path) {
+                $scope.locationPath = path;
+            });
 
 
         }
@@ -253,22 +262,9 @@
     bookStoreCtrls.controller('contentCtrl', ['$scope', '$routeParams', '$location',
         function($scope, $routeParams, $location) {
 
-
-            // $(document).ready(function() {
-            // function fixHeight() {
-            //     // var headerHeight = $("#switcher").height();
-            //     $("#iframe").attr("height", $(window).height() - 54 + "px");
-            // }
-            // $(window).resize(function() {
-            //     fixHeight();
-            // }).resize();
-            
+         $scope.title = $routeParams.id;
 
             $('body').addClass("page-content")
-
-
-
-
 
             console.log($location)
             console.log($routeParams)
