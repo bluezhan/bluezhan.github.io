@@ -15,10 +15,12 @@
                 time: "<p>01<span>㊊</span>~~<span></span></p>/2016",
                 cells: [{
                     title: "HTML5 Web 存储",
-                    tags: ["HTML5", "Javascript"]
+                    tags: ["HTML5", "Javascript"],
+                    summary: "<p>在客户端存储数据                    HTML5 提供了两种在客户端存储数据的新方法：                    localStorage - 没有时间限制的数据存储                    sessionStorage - 针对一个 session 的数据存储                    之前， 这些都是由 cookie 完成的。 但是 cookie 不适合大量数据的存储， 因为它们由每个对服务器的请求来传递， 这使得 cookie 速度很慢而且效率也不高。                    在 HTML5 中， 数据不是由每个服务器请求传递的， 而是只有在请求时使用数据。 它使在不影响网站性能的情况下存储大量数据成为可能。                    对于不同的网站， 数据存储于不同的区域， 并且一个网站只能访问其自身的数据。                    HTML5 使用 JavaScript 来存储和访问数据。</p>"
                 }, {
                     title: "JavaScript的语言设计有哪些缺陷？",
-                    tags: ["Javascript", "Webapp"]
+                    tags: ["Javascript", "Webapp"],
+                    summary: "<p>你们可能读了 《ECMAScript Specification》，以为闭包必然持有外部所有变量的引用，这种错误的认识还挺普遍的，我在这个回答里也澄清过了，要清楚Spec只是描述语义，而非具体实现细节：和 C/C++ 相比，JavaScript 的性能差在哪里 ？ 不过我要提醒大家，v8等引擎，即使ES5下在GC实现上也有Bug：An interesting kind of JavaScript memory leak两个函数 Share 了同一个 Env 对象。颇为讽刺的是，作者将此发表到 HackerNews 上竟然有一群无知的JS程序员认为这是该有的行为，然后还引用《ES Spec》之乎者也起来。不知道这Bug现在修复好没有，不过这也属于解释器实现的问题，并非语言自身缺陷。</p>"
                 }, {
                     title: "学会说人话！8个文案改进方法帮你快速提高用户体验",
                     tags: ["Javascript", "Webapp", "浏览器"]
@@ -262,7 +264,7 @@
     bookStoreCtrls.controller('contentCtrl', ['$scope', '$routeParams', '$location',
         function($scope, $routeParams, $location) {
 
-         $scope.title = $routeParams.id;
+            $scope.title = $routeParams.id;
 
             $('body').addClass("page-content")
 

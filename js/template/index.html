@@ -55,16 +55,16 @@
                         Tag:
                         <span title="{{tag}}" ng-repeat="tag in cell.tags">&nbsp;{{tag}}&nbsp;</span>
                     </div>
-                    <div class="summary">
+                    <div class="summary"  ng-bind-html="cell.summary|to_trusted">
+                         {{cell.summary}}
                          <p>Using the ~/.aws/credentials and ~/.aws/config files you may specify <code>AWS_PROFILE</code> to tell apex which one to reference. However, if you do not have a ~/.aws/config file, or “region” is not defined, you should set it with the <code>AWS_REGION</code> environment variable. To read more on configuring these files view <a href="">Configuring the AWS CLI</a>.</p>
-                         <p>Using the ~/.aws/credentials and ~/.aws/config files you may specify <code>AWS_PROFILE</code> to tell apex which one to reference. However, if you do not have a ~/.aws/config file, or “region” is not defined, you should set it with the <code>AWS_REGION</code> environment variable. To read more on configuring these files view <a href="">Configuring the AWS CLI</a>.</p>
+                         <p></p>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
     <div class="foorter-info">
-        
         <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
     </div>
 </article>
