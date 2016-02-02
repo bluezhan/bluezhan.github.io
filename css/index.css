@@ -408,9 +408,9 @@ footer {
 }
 footer a {
     font-style: italic;
-        /*border-bottom: 1px solid #ddd;*/
+        border-bottom: 1px solid #ddd;
 }
 footer a:hover {
     
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }
