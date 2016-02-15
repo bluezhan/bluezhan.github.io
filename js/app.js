@@ -5,7 +5,7 @@ var myblogApp = angular.module('myblog', [
 // myblogApp.config(function($routeProvider) {
 // myblogApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 myblogApp.config(['$routeProvider', '$locationProvider', '$sceProvider', function ($routeProvider, $locationProvider, $sceProvider) {
-     $locationProvider.html5Mode(true);
+     // $locationProvider.html5Mode(true);
     $routeProvider.when('/index', {
         templateUrl: '/js/template/index.html',
         controller: 'indexCtrl'

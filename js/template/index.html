@@ -1,8 +1,6 @@
 <style type="text/css">
 @import url(./css/global.css);
-
-/*@import url(./marxico.css);*/
-
+@import url(./css/menu.css);
 @import url(./css/index.css);
 </style>
 <!-- header -->
@@ -49,7 +47,7 @@
             <ul>
                 <li ng-repeat="cell in list.cells">
                     <!-- 《 -->
-                    <p class="title" nav-to="/content/{{cell.title}}"><a ng-href="/content/33">{{cell.title}}</a></p>
+                    <p class="title" nav-to="/content/{{cell.title}}"><a ng-href="#/content/33">{{cell.title}}</a></p>
                     <!-- 》 -->
                     <div class="tag-box">
                         Tag:

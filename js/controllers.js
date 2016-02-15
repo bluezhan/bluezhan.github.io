@@ -242,6 +242,22 @@
             $("#loading").hide()
             $('body').removeClass("page-content")
 
+            var $document = $(document);
+
+            $document.ready(function() {
+
+                var $postContent = $(".post-content");
+                // $postContent.fitVids();
+
+                // $(".scroll-down").arctic_scroll();
+
+                $(".menu-button, .nav-cover, .nav-close").on("click", function(e) {
+                    e.preventDefault();
+                    $("body").toggleClass("nav-opened nav-closed");
+                });
+
+            });
+
             $scope.$watch('locationPath', function(path) {
                 $location.path(path);
             });
