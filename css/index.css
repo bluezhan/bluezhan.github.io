@@ -206,6 +206,7 @@ header .box .text-go-blog .arrow span {
     width: 100%;
     height: auto;
     text-align: center;
+    padding: 0 120px;
     margin-bottom: 200px;
     /*background-color: #556*/
 }

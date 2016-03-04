@@ -14,6 +14,10 @@
             $scope.lists = [{
                 time: "<p>01<span>㊊</span>~~<span></span></p>/2016",
                 cells: [{
+                    title: "Angular 1.x OR Angular 2.0",
+                    tags: ["Angular", "Javascript"],
+                    summary: "<p>就目前来说，我们团队还在使用Angular1.x，对于Angular2.0出来，是否升级？我们内部也做过讨论，肯定是要升级到2的，只是现在还不是时候，Angular2.0，无论是performance还是设计上肯定是超越前代的。这篇博客中，我们将介绍Angular2.0的三个核心概念：<b>组件化，依赖注入，绑定。</b></p>"
+                },{
                     title: "HTML5 Web 存储",
                     tags: ["HTML5", "Javascript"],
                     summary: "<p>在客户端存储数据                    HTML5 提供了两种在客户端存储数据的新方法：                    localStorage - 没有时间限制的数据存储                    sessionStorage - 针对一个 session 的数据存储                    之前， 这些都是由 cookie 完成的。 但是 cookie 不适合大量数据的存储， 因为它们由每个对服务器的请求来传递， 这使得 cookie 速度很慢而且效率也不高。                    在 HTML5 中， 数据不是由每个服务器请求传递的， 而是只有在请求时使用数据。 它使在不影响网站性能的情况下存储大量数据成为可能。                    对于不同的网站， 数据存储于不同的区域， 并且一个网站只能访问其自身的数据。                    HTML5 使用 JavaScript 来存储和访问数据。</p>"
@@ -250,6 +254,8 @@
                 // $postContent.fitVids();
 
                 // $(".scroll-down").arctic_scroll();
+                
+                setTimeout(function(){$(".nav").show();},500)
 
                 $(".menu-button, .nav-cover, .nav-close").on("click", function(e) {
                     e.preventDefault();
