@@ -1,0 +1,709 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,重构," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前言估计年后，大部分开发人员都流入了市场；面试满城市奔跑（有些人士是请假去，还有些直接就去，请个毛假）。那来了，前端工程师就会开始复习复习基础（CSS、HTML、JavaScript）啦，做一些题目（来来去去都是问那些）；然后就扯自己的经历，然后就没然后啦。   啊哈，说远了；大部分开发人员去大公司（或者传统一点），没关系，因为不同公司有不同的开发流程、开发规范、项目需求。或者是新起的、介入的、维">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端重构的点点滴滴">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2016/05/11/前端重构的点点滴滴/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="前言估计年后，大部分开发人员都流入了市场；面试满城市奔跑（有些人士是请假去，还有些直接就去，请个毛假）。那来了，前端工程师就会开始复习复习基础（CSS、HTML、JavaScript）啦，做一些题目（来来去去都是问那些）；然后就扯自己的经历，然后就没然后啦。   啊哈，说远了；大部分开发人员去大公司（或者传统一点），没关系，因为不同公司有不同的开发流程、开发规范、项目需求。或者是新起的、介入的、维">
+<meta property="og:updated_time" content="2016-05-11T14:01:59.126Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端重构的点点滴滴">
+<meta name="twitter:description" content="前言估计年后，大部分开发人员都流入了市场；面试满城市奔跑（有些人士是请假去，还有些直接就去，请个毛假）。那来了，前端工程师就会开始复习复习基础（CSS、HTML、JavaScript）啦，做一些题目（来来去去都是问那些）；然后就扯自己的经历，然后就没然后啦。   啊哈，说远了；大部分开发人员去大公司（或者传统一点），没关系，因为不同公司有不同的开发流程、开发规范、项目需求。或者是新起的、介入的、维">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 前端重构的点点滴滴 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                前端重构的点点滴滴
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-11T21:54:53+08:00" content="2016-05-11">
+              2016-05-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/11/前端重构的点点滴滴/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/11/前端重构的点点滴滴/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>估计年后，大部分开发人员都流入了市场；面试满城市奔跑（有些人士是请假去，还有些直接就去，请个毛假）。<br>那来了，前端工程师就会开始复习复习基础（CSS、HTML、JavaScript）啦，做一些题目（来来去去都是问那些）；然后就扯自己的经历，然后就没然后啦。   啊哈，说远了；大部分开发人员去大公司（或者传统一点），没关系，因为不同公司有不同的开发流程、开发规范、项目需求。或者是新起的、介入的、维护的、重构的等等。  总有一些坑需要你一边骂一边填（看心情，其实你也是个挖坑高手）。<br>大家都会在入职前期摸索摸索，或有人带，或看文档（想多了，入职第一天，别人的锅就扔过来了）。<br>没经历过写CSS的不是好前端，没写过很烂的CSS的不是好重构，没被烦过的需求不是好开发；然而都是扯淡。项目需求增加，没时间优化，规模开始膨胀，总之怎么方便怎么来，到最后复杂度就是一坨屎。善哉善哉！！！</p>
+<h4 id="扯一下CSS是怎么被弄坏的"><a href="#扯一下CSS是怎么被弄坏的" class="headerlink" title="扯一下CSS是怎么被弄坏的"></a>扯一下CSS是怎么被弄坏的</h4><blockquote>
+<p>一段CSS没写好，一定是他基础没打扎实；也有可能是…（嘻嘻，没什么，你懂得）。  </p>
+</blockquote>
+<a id="more"></a>
+<h5 id="懒惰派"><a href="#懒惰派" class="headerlink" title="懒惰派"></a>懒惰派</h5><p>能嵌套在DOM就嵌套；啊哈，我擦，加个 <strong>!important</strong> 就搞定了；我去，怎么会有影响；加个嵌套DOM标签，把它包起来；哦不，我自己写个，我看看怎么名字才独特，加点数字再添点拼音；哈哈哈，好啦 Bingo </p>
+<h5 id="神教派"><a href="#神教派" class="headerlink" title="神教派"></a>神教派</h5><p>我就用<strong>DIV+CSS</strong>就可以已经打天下了；什么啊 <strong>a标签</strong>，点击事件统一使用JavaScript；我喜欢在CSS加个我的独特英文名。</p>
+<h5 id="完事派"><a href="#完事派" class="headerlink" title="完事派"></a>完事派</h5><p>测试都通过了，UI也没什么问题，产品也没说什么，感觉棒棒哒；啊呀，时间不多了，就这样先；嘿，搞不定，还不如老老实实，算啦；改天再来优化它。</p>
+<h5 id="呵呵派"><a href="#呵呵派" class="headerlink" title="呵呵派"></a>呵呵派</h5><p>我觉得没问题啊，你觉得有问题吗；你这里可以这样写吗，我们统一一下吧，弄规范点；你不是说一下子能弄好的了吗。</p>
+<h5 id="翱翔派"><a href="#翱翔派" class="headerlink" title="翱翔派"></a>翱翔派</h5><p>不够优美或完善的地方，改；看不下去，实在呕心，改；必须重构，必须用新工具，新代码，新的技术，改改改；设计和需求必须完美完善，干干干；一切都是过度，本末倒置，是病，得治~~~</p>
+<h4 id="为什么要重构"><a href="#为什么要重构" class="headerlink" title="为什么要重构"></a>为什么要重构</h4><blockquote>
+<p>重构从来不是一个项目，也不是一项任务，重构应当时刻保持；它是对需求和设计并不直接创造“价值”的一种价值。</p>
+</blockquote>
+<p>不得不提 <strong>工匠精神</strong>，它是指工匠对自己的产品精雕细琢，精益求精的精神理念。</p>
+<ul>
+<li><strong>精神简介</strong><br>工匠们喜欢不断雕琢自己的产品，不断改善自己的工艺，享受着产品在双手中升华的过程。工匠们对细节有很高要求，追求完美和极致，对精品有着执着的坚持和追求，把品质从99%提高到99.99%，其利虽微，却长久造福于世。</li>
+<li><strong>精神内涵</strong><br>1、精益求精。注重细节，追求完美和极致，不惜花费时间精力，孜孜不倦，反复改进产品，把99%提高到99.99%。<br>2、严谨，一丝不苟。不投机取巧，必须确保每个部件的质量，对产品采取严格的检测标准，不达要求绝不轻易交货。<br>3、耐心，专注，坚持。不断提升产品和服务，因为真正的工匠在专业领域上绝对不会停止追求进步，无论是使用的材料、设计还是生产流程，都在不断完善。<br>4、专业，敬业。工匠精神的目标是打造本行业最优质的产品，其他同行无法匹敌的卓越产品。</li>
+</ul>
+<p>而软件所需的重构也该是如此。来自知乎<a href="http://www.zhihu.com/question/19552812" target="_blank" rel="external">「李申申，知乎 002 号员工」</a>的回答：</p>
+<ul>
+<li>「重构」并不是完全打翻重来，最开始的设计也并非一无是处。</li>
+<li>软件开发是一个过程，软件使用的人群、环境都可能在进行中发生变化，当初设计中的一些假设、条件都会变化，这就需要根据新的状况做出调整。「重构」是代码层面的「重设计」，代码是软件的实现方式，设计做出调整，代码当然也要调整。</li>
+<li>「重构」也是对原有代码的完善，消除代码中的腐臭味，让代码更健壮、效率更高、更易维护。这是软件开发的规律决定的，没有人能一次写出完善的代码。</li>
+</ul>
+<h4 id="关于-CSS架构的一些思考"><a href="#关于-CSS架构的一些思考" class="headerlink" title="关于 CSS架构的一些思考"></a>关于 CSS架构的一些思考</h4><p>对于CSS框架来说，大家很熟悉的 Twitter Bootstrap，还有其他…<br>擅长CSS的前端开发人员，肯定会对兼容、媒体查询、过渡、过滤、转换等；或者说是对页面渲染有着自己结构化的见解，会对CSS结构化分离，CSS的命名有着规范化的处理；对使用CSS预处理器（Less、SCSS、Stylus）全面认识和选择。</p>
+<p>对于框架来说，CSS架构目标并不同于开发一个好的应用程序，它必须是可预测、可重用、可维护和可伸缩的。来自<a href="http://luopq.com/2016/01/05/css-optimize/" target="_blank" rel="external">CSS代码重构与优化之路</a></p>
+<h5 id="可预测"><a href="#可预测" class="headerlink" title="可预测"></a>可预测</h5><p>可预测意味着可以像预期的那样规范自己的行为。当你添加或者修改某个规则时，它并不会影响到没有指定的部分。对于一个小网站来说，一些微乎其微的改变并不算什么。而对于拥有成千上万个页面的大网站来说，可预测却是必须的。</p>
+<h5 id="可重用"><a href="#可重用" class="headerlink" title="可重用"></a>可重用</h5><p>CSS规则应具备抽象和解耦性，这样你就可以在现有的基础上快速构建新的组件，无需重新修改编码模式。</p>
+<h5 id="可维护"><a href="#可维护" class="headerlink" title="可维护"></a>可维护</h5><p>当把新组件放置到网站上，并且执行添加、修改或者重新设计操作时，无需重构现有CSS，并且新添加的X并不会打破原有页面的Y组件。</p>
+<h5 id="可扩展"><a href="#可扩展" class="headerlink" title="可扩展"></a>可扩展</h5><p>当网站发展到一定规模后，都需要进行维护和扩展。可扩展的CSS意味着网站的CSS架构可以由个人或者团队轻易地管理，无需花费太多的学习成本。</p>
+<p>CSS不仅仅是视觉设计，也不要因为你编写CSS就随便抛出编程的最佳实践。像OOP、DRY、打开/闭合、与内容分离等这些规则应该应用到CSS里面。无论你如何组织代码，都要确保方法真正帮助到你，并且使你的开发更加容易和可维护的。</p>
+<h4 id="基础规范-gt-基础样式-gt-组件-gt-控件-gt-插件"><a href="#基础规范-gt-基础样式-gt-组件-gt-控件-gt-插件" class="headerlink" title="基础规范 -&gt; 基础样式 -&gt; 组件 -&gt; 控件 -&gt; 插件"></a>基础规范 -&gt; 基础样式 -&gt; 组件 -&gt; 控件 -&gt; 插件</h4><p>重构这个东西，必须要需求方、设计方、开发方一起弄的。</p>
+<h4 id="市面上的一些UI框架的结构"><a href="#市面上的一些UI框架的结构" class="headerlink" title="市面上的一些UI框架的结构"></a>市面上的一些UI框架的结构</h4><p>市面上有很多很好的UI框架，这里就不一一举例子；当我们使用或者看UI框架的时候，会接触到该框架的设计模式；多多少少都会感悟点什么。每个公司都有自己的编码规范，开发规范；做了一些约束。<br>我们或多或少都知道一些前端的开发规范，这些都是基础，简简单单。如果说到使用到项目来，有组件、控件和和插件。那就是开发规范那么简单的了。不过凡事都是必须基础打扎实。</p>
+<h5 id="Twitter-Bootstrap"><a href="#Twitter-Bootstrap" class="headerlink" title="Twitter Bootstrap"></a>Twitter Bootstrap</h5><p>我们可以看看<a href="http://codeguide.bootcss.com/" target="_blank" rel="external">Twitter Bootstrap的编码规范</a>，一目了然。</p>
+<h5 id="前端好坏写法"><a href="#前端好坏写法" class="headerlink" title="前端好坏写法"></a>前端好坏写法</h5><h5 id="大公司的HTML结构是怎样"><a href="#大公司的HTML结构是怎样" class="headerlink" title="大公司的HTML结构是怎样"></a>大公司的HTML结构是怎样</h5><h5 id="DOM语义化"><a href="#DOM语义化" class="headerlink" title="DOM语义化"></a>DOM语义化</h5><h5 id="聊聊组件"><a href="#聊聊组件" class="headerlink" title="聊聊组件"></a>聊聊组件</h5><h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="http://blog.jobbole.com/31147/" target="_blank" rel="external">CSS架构</a><br><a href="http://blog.jobbole.com/76032/" target="_blank" rel="external">编写可维护的CSS</a><br><a href="http://codeguide.bootcss.com/" target="_blank" rel="external">Bootstrap 编码规范</a><br><a href="http://yalishizhude.github.io/" target="_blank" rel="external">亚里士朱德的博客</a><br><a href="http://www.cnblogs.com/dangjian/" target="_blank" rel="external">党建-Web前端开发最佳实践</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+            <a href="/blog/tags/重构/" rel="tag">#重构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/05/11/整理一些前端研发的最新资讯/" rel="next" title="整理一些前端研发的最新资讯">
+                <i class="fa fa-chevron-left"></i> 整理一些前端研发的最新资讯
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/11/前端重构的点点滴滴/"
+           data-title="前端重构的点点滴滴" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2016/05/11/前端重构的点点滴滴/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆有</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扯一下CSS是怎么被弄坏的"><span class="nav-number">2.</span> <span class="nav-text">扯一下CSS是怎么被弄坏的</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#懒惰派"><span class="nav-number">2.1.</span> <span class="nav-text">懒惰派</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#神教派"><span class="nav-number">2.2.</span> <span class="nav-text">神教派</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#完事派"><span class="nav-number">2.3.</span> <span class="nav-text">完事派</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#呵呵派"><span class="nav-number">2.4.</span> <span class="nav-text">呵呵派</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#翱翔派"><span class="nav-number">2.5.</span> <span class="nav-text">翱翔派</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要重构"><span class="nav-number">3.</span> <span class="nav-text">为什么要重构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-CSS架构的一些思考"><span class="nav-number">4.</span> <span class="nav-text">关于 CSS架构的一些思考</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#可预测"><span class="nav-number">4.1.</span> <span class="nav-text">可预测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可重用"><span class="nav-number">4.2.</span> <span class="nav-text">可重用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可维护"><span class="nav-number">4.3.</span> <span class="nav-text">可维护</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可扩展"><span class="nav-number">4.4.</span> <span class="nav-text">可扩展</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基础规范-gt-基础样式-gt-组件-gt-控件-gt-插件"><span class="nav-number">5.</span> <span class="nav-text">基础规范 -> 基础样式 -> 组件 -> 控件 -> 插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#市面上的一些UI框架的结构"><span class="nav-number">6.</span> <span class="nav-text">市面上的一些UI框架的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Twitter-Bootstrap"><span class="nav-number">6.1.</span> <span class="nav-text">Twitter Bootstrap</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前端好坏写法"><span class="nav-number">6.2.</span> <span class="nav-text">前端好坏写法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#大公司的HTML结构是怎样"><span class="nav-number">6.3.</span> <span class="nav-text">大公司的HTML结构是怎样</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DOM语义化"><span class="nav-number">6.4.</span> <span class="nav-text">DOM语义化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聊聊组件"><span class="nav-number">6.5.</span> <span class="nav-text">聊聊组件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
