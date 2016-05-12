@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="This's BlueZhan">
 <meta property="og:description" content="2013年微信的公众号火了一把，市面突飞出现了喜欢小公司都在弄基于公众号第三方接入开发。我也不例外，也跑在这条队列中来；我当时是处于5个人的小团队里，不用说了，最后散火了那是我大三赶着刚考完期末考试，第二天就出现在老板的身边，啊哈哈哈那是13年的6月底，我们已经开始在弄需求和设计了，而我还要弄另一个小项目，就是为电信弄个高铁网关广告H5页面。
 至于那个公众号第三方接入的项目的开始是在7月初开始，我">
-<meta property="og:updated_time" content="2016-05-12T15:41:30.353Z">
+<meta property="og:updated_time" content="2016-05-12T15:48:20.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈谈基于微信的HTML5开发的实践">
 <meta name="twitter:description" content="2013年微信的公众号火了一把，市面突飞出现了喜欢小公司都在弄基于公众号第三方接入开发。我也不例外，也跑在这条队列中来；我当时是处于5个人的小团队里，不用说了，最后散火了那是我大三赶着刚考完期末考试，第二天就出现在老板的身边，啊哈哈哈那是13年的6月底，我们已经开始在弄需求和设计了，而我还要弄另一个小项目，就是为电信弄个高铁网关广告H5页面。
@@ -317,7 +317,8 @@
 <p>那么现在问题来了，到底为什么会这样呢？</p>
 <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>当使用委托给一个元素添加click事件时，如果事件是委托到 document 或 body 上，并且委托的元素是默认不可点击的（如 div, span 等），此时 click 事件会失效。</p>
 <h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>解决办法有 4 种可供选择：</p>
-<p>​将 click 事件直接绑定到目标​元素（​​即 .target）上<br>将目标​元素换成 <a> 或者 button 等可点击的​元素<br>​将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上<br>​给​目标元素加一条样式规则 cursor: pointer;<br>​推荐后两种。从解决办法来看，​推测在 safari 中，不可点击的元素的点击事件不会冒泡到父级元素。通过添加 cursor: pointer 使得元素变成了可点击的了。</a></p>
+<p>​1、将 click 事件直接绑定到目标​元素（​​即 .target）上<br>2、将目标​元素换成 a 标签 或者 button 等可点击的​元素<br>​3、将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上<br>​4、给​目标元素加一条样式规则 cursor: pointer</p>
+<p>​推荐后两种。从解决办法来看，​推测在 safari 中，不可点击的元素的点击事件不会冒泡到父级元素。通过添加 cursor: pointer 使得元素变成了可点击的了。</p>
 <p>来自：<a href="http://happycoder.net/solve-ios-safari-click-event-bug/" target="_blank" rel="external">http://happycoder.net/solve-ios-safari-click-event-bug/</a></p>
 <h3 id="input的一些注意的地方"><a href="#input的一些注意的地方" class="headerlink" title="input的一些注意的地方"></a>input的一些注意的地方</h3><p>讲的是，webapp使用了input的时候，会调用系统的输入键盘<br>按道理的话，系统会将input推到可视的地方，这只是部分Android低版本或者是hybrid app,也就是低版本，是推不上的。<br>我们今天暂且不讨论这个问题，我们是讨论推上去了却不下来！！！<br>那个坑啊，本来一开始是想方设法推上去，TMD现在还要想方设法推下来。</p>
 <p>其实有一个东东会干涉到</p>
