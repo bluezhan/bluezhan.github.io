@@ -1,0 +1,740 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git,前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="五个区域六个命令
+Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace：工作区stash:  贮藏区
+什么是 Git Flowgit flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。Gitflow 是基于 Git 的强大分支能力所构建的一套软件开发工作流，最早由 Vincent Driessen 在 2010 年提出。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git Flow的工作流程">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2016/05/18/2016-05-18/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="五个区域六个命令
+Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace：工作区stash:  贮藏区
+什么是 Git Flowgit flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。Gitflow 是基于 Git 的强大分支能力所构建的一套软件开发工作流，最早由 Vincent Driessen 在 2010 年提出。">
+<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/git-01.png">
+<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/git-02.png">
+<meta property="og:updated_time" content="2016-05-19T15:22:47.420Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git Flow的工作流程">
+<meta name="twitter:description" content="五个区域六个命令
+Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace：工作区stash:  贮藏区
+什么是 Git Flowgit flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。Gitflow 是基于 Git 的强大分支能力所构建的一套软件开发工作流，最早由 Vincent Driessen 在 2010 年提出。">
+<meta name="twitter:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/git-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Git Flow的工作流程 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git Flow的工作流程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T23:17:10+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/05/18/2016-05-18/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/2016-05-18/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="五个区域六个命令"><a href="#五个区域六个命令" class="headerlink" title="五个区域六个命令"></a>五个区域六个命令</h4><p><img src="/blog/images/git-01.png" alt="Alt text"></p>
+<p>Remote：远程仓库<br>Respository：本地仓库<br>Index/Stage：暂存区<br>workspace：工作区<br>stash:  贮藏区</p>
+<h4 id="什么是-Git-Flow"><a href="#什么是-Git-Flow" class="headerlink" title="什么是 Git Flow"></a>什么是 Git Flow</h4><p>git flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。<br>Gitflow 是基于 Git 的强大分支能力所构建的一套软件开发工作流，最早由 Vincent Driessen 在 2010 年提出。最有名的大概是下面这张图。</p>
+<p><img src="/blog/images/git-02.png" alt="Alt text"></p>
+<p>在 Gitflow 的模型里，软件开发活动基于不同的分支：</p>
+<h5 id="两种核心分支"><a href="#两种核心分支" class="headerlink" title="两种核心分支"></a>两种核心分支</h5><ul>
+<li>master 该分支上的代码随时可以部署到生产环境</li>
+<li>develop 作为每日构建的集成分支，到达稳定状态时可以发布并 merge 回 master</li>
+</ul>
+<h5 id="三种辅助分支"><a href="#三种辅助分支" class="headerlink" title="三种辅助分支"></a>三种辅助分支</h5><ul>
+<li>Feature branches 每个新特性都在独立的 feature branch 上进行开发，并在开发结束后 merge 回 develop</li>
+<li>Release branches 为每次发布准备的 release candidate，在这个分支上只进行 bug fix，并在完成后 merge 回 master 和 develop</li>
+<li>Hotfix branches 用于快速修复，在修复完成后 merge 回 master 和 develop</li>
+</ul>
+<p>Gitflow 通过不同分支间的交互规划了一套软件开发、集成、部署的工作流。</p>
+<a id="more"></a>
+<h5 id="两种核心分支-1"><a href="#两种核心分支-1" class="headerlink" title="两种核心分支"></a>两种核心分支</h5><ul>
+<li><strong>主分支(Master)</strong>：代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。这个分支只能从其它分支合并，不能在这个分支上直接修改。需要注意的是，所有在master上的提交应该标记tag。</li>
+<li><strong>开发主分支(Develop)</strong>：这个分支是我们是我们的主开发分支，包含所有要发布到下一个Release的代码，这个主要合并与其他分支，比如Feature分支。该分支应该只是进行一些优化和升级开发，如果有新的需求应该拉出一个feature分支。</li>
+</ul>
+<h5 id="三种辅助分支-1"><a href="#三种辅助分支-1" class="headerlink" title="三种辅助分支"></a>三种辅助分支</h5><ul>
+<li><strong>功能(feature)分支</strong>：这个分支主要是用来开发一个新的功能，一旦开发完成，我们合并回Develop分支进入下一个Release。</li>
+<li><strong>预发布(release)分支</strong>：当你需要一个发布一个新Release的时候，我们基于Develop分支创建一个Release分支，完成Release后，我们合并到Master和Develop分支。</li>
+<li><strong>修补bug(hotfix)分支</strong>：当我们在Production发现新的Bug时候，我们需要创建一个Hotfix, 完成Hotfix后，我们合并回Master和Develop分支，所以Hotfix的改动会进入下一个Release。</li>
+</ul>
+<p><strong>这三种分支都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有master和develop。</strong></p>
+<h4 id="分支命名规范"><a href="#分支命名规范" class="headerlink" title="分支命名规范"></a>分支命名规范</h4><ul>
+<li><strong>feature分支</strong>：以”feature_”开头，如: feature_v1.1</li>
+<li><strong>release分支</strong>：以”release_”开头，如: release_v1.1</li>
+<li><strong>hotfix分支</strong>：以”hotfix_”开头，如hotfix_20160112</li>
+<li><strong>tag标记</strong>：如果是release分支合并，则以”release<em>“开头。如果是hotfix分支合并，则以”hotfix</em>“开头。</li>
+<li><strong>master分支每次提交都要打tag，release tag</strong>：如release_v1.1，hotfix tag：如hotfix_20160112</li>
+</ul>
+<p><strong>命名都统一采用小写。</strong></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1，一定要按git flow的流程去管理分支，如feature分支开发完要合并到develop，如果要发布版本到test环境，则从develop拉出一个release分支，release完成后要合并回master和develop分支，修复生产环境问题需要从master拉出一个hotfix分支，hotfix完成后要合并回master和develop分支，并且在master打上tag。</p>
+<p>2，一定要按分支命名规范来命名，便于管理和维护。</p>
+<p>3，了解了git flow工作流程后，可以不使用git flow GUI工具，手动操作即可，可以是原生git命令+vs配合操作，比如给master打tag就要用git命令，这在vs里操作不了的，比如合并分支，虽然也可以使用git命令实现，但在vs里操作更方便直观。</p>
+<p>4，一定要保持分支的纯净，不要随便污染分支。比如，develop分支只包含要发布到下一个release的代码，在没有拉出release分支前不要合并新的feature分支进来。release分支基于develop分支创建，拉出release分支后，我们可以在这个release分支上测试和修复bug，但是，一旦打了release分支后不要从develop分支合并新的改动过来。develop拉出release分支的同时，也意味着develop分支可以开始下一个release的准备工作了。</p>
+<p>5，如果多个版本并行到test环境，怎么解决这个问题？如下图。</p>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">https://git-scm.com/book/zh/v2</a><br><a href="https://www.atlassian.com/git/" target="_blank" rel="external">https://www.atlassian.com/git/</a><br><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="external">http://www.ituring.com.cn/article/56870</a><br><a href="http://www.cnblogs.com/cnblogsfans/p/5075073.html" target="_blank" rel="external">http://www.cnblogs.com/cnblogsfans/p/5075073.html</a><br><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">http://nvie.com/posts/a-successful-git-branching-model/</a><br><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html</a><br><a href="http://blog.jobbole.com/76867/" target="_blank" rel="external">http://blog.jobbole.com/76867/</a><br><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">http://rogerdudler.github.io/git-guide/index.zh.html</a><br><a href="http://scottchacon.com/2011/08/31/github-flow.html" target="_blank" rel="external">http://scottchacon.com/2011/08/31/github-flow.html</a><br><a href="http://news.cnblogs.com/n/539167/" target="_blank" rel="external">http://news.cnblogs.com/n/539167/</a><br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
+<hr>
+<h4 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h4><ul>
+<li>master</li>
+<li>hotfixes</li>
+<li>release</li>
+<li>develop</li>
+<li>feature</li>
+</ul>
+<p>master -&gt; hotfixes</p>
+<p>feature -&gt; future feature<br>feature -&gt; next feature</p>
+<p>release -&gt; bugfixes</p>
+<p>三个分支（hotfixes、feature、release ）必须 back into develop</p>
+<p>打 Tag，每个流程都必须闭合（完整性）<br>完成必须需要打 Tag</p>
+<ul>
+<li>大部分完成一个辅助分支的子分支都不删除</li>
+<li>（时刻记住自己在那里（父节点是谁））</li>
+<li>拉去数据或者切换分支，保持本地开发环境干净（暂存）</li>
+<li>什么是冲突（怎么会冲突）怎么解决，怎么避免</li>
+</ul>
+<p>git设置发布代码</p>
+<p>两个主分支，三个辅助分支<br>命名、打Tag<br>冲突、贮藏</p>
+<p>git 小技巧（工具使用）</p>
+<p>冲突（同一个文件一行代码，覆盖了）</p>
+<p>时间周期长冲突<br>代码不是最新的<br>（rename、旧代码大量修改）<br>什么叫基础代码<br>（在软件开发的世界里，如果一件事很痛苦，那就频繁地去做它。）<br>git flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。<br>git 冻结</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/git/" rel="tag">#git</a>
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/05/15/2016-05-15/" rel="next" title="来个CSS框架给你们">
+                <i class="fa fa-chevron-left"></i> 来个CSS框架给你们
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/18/2016-05-18/"
+           data-title="Git Flow的工作流程" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2016/05/18/2016-05-18/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆有</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#五个区域六个命令"><span class="nav-number">1.</span> <span class="nav-text">五个区域六个命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-Git-Flow"><span class="nav-number">2.</span> <span class="nav-text">什么是 Git Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#两种核心分支"><span class="nav-number">2.1.</span> <span class="nav-text">两种核心分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三种辅助分支"><span class="nav-number">2.2.</span> <span class="nav-text">三种辅助分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#两种核心分支-1"><span class="nav-number">2.3.</span> <span class="nav-text">两种核心分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三种辅助分支-1"><span class="nav-number">2.4.</span> <span class="nav-text">三种辅助分支</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支命名规范"><span class="nav-number">3.</span> <span class="nav-text">分支命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#草稿"><span class="nav-number">6.</span> <span class="nav-text">草稿</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
