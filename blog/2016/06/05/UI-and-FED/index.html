@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,git," />
+  <meta name="keywords" content="前端,UI," />
 
 
 
@@ -84,28 +84,32 @@
 
 
 
-<meta name="description" content="五个区域八个命令
-Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace：工作区stash:  贮藏区
-（上面图有个错误之处，暂存区git stach到贮藏区，贮藏区git stach pop回到工作区）
-什么是 Git Flowgit flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。Gitflow 是基于 Git 的强">
+<meta name="description" content="前言大家好啦，前两篇文章轻微且不值一提的文章。
+《UI设计稿那些事》《我来做个UI规范规范一下》
+哦嚯了喔~~~
+又过来一段时间了，我看现在大部分人都有过和UI设计师那些纠缠的过往，有时候因为布局上的多样性、像素精确性、切图协调性、需求调动性，改来改去，修来修去；弄得前端一塌糊涂，甚至UI设计师已经在怀疑这个前端的水平了；沟通不好，互不尊重，最后TMD可能两败俱伤。
+前端攻城狮和射鸡尸本来是两种物">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Flow的工作流程">
-<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2016/05/18/2016-05-18/index.html">
+<meta property="og:title" content="UI and FED">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2016/06/05/UI-and-FED/index.html">
 <meta property="og:site_name" content="This's BlueZhan">
-<meta property="og:description" content="五个区域八个命令
-Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace：工作区stash:  贮藏区
-（上面图有个错误之处，暂存区git stach到贮藏区，贮藏区git stach pop回到工作区）
-什么是 Git Flowgit flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。Gitflow 是基于 Git 的强">
-<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/git-01.01.png">
-<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/git-02.png">
-<meta property="og:updated_time" content="2016-05-20T17:08:36.739Z">
+<meta property="og:description" content="前言大家好啦，前两篇文章轻微且不值一提的文章。
+《UI设计稿那些事》《我来做个UI规范规范一下》
+哦嚯了喔~~~
+又过来一段时间了，我看现在大部分人都有过和UI设计师那些纠缠的过往，有时候因为布局上的多样性、像素精确性、切图协调性、需求调动性，改来改去，修来修去；弄得前端一塌糊涂，甚至UI设计师已经在怀疑这个前端的水平了；沟通不好，互不尊重，最后TMD可能两败俱伤。
+前端攻城狮和射鸡尸本来是两种物">
+<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/ui-fed-01.png">
+<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/ui-fed-02.png">
+<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/ui-fed-03.png">
+<meta property="og:updated_time" content="2016-06-05T00:09:12.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git Flow的工作流程">
-<meta name="twitter:description" content="五个区域八个命令
-Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace：工作区stash:  贮藏区
-（上面图有个错误之处，暂存区git stach到贮藏区，贮藏区git stach pop回到工作区）
-什么是 Git Flowgit flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。Gitflow 是基于 Git 的强">
-<meta name="twitter:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/git-01.01.png">
+<meta name="twitter:title" content="UI and FED">
+<meta name="twitter:description" content="前言大家好啦，前两篇文章轻微且不值一提的文章。
+《UI设计稿那些事》《我来做个UI规范规范一下》
+哦嚯了喔~~~
+又过来一段时间了，我看现在大部分人都有过和UI设计师那些纠缠的过往，有时候因为布局上的多样性、像素精确性、切图协调性、需求调动性，改来改去，修来修去；弄得前端一塌糊涂，甚至UI设计师已经在怀疑这个前端的水平了；沟通不好，互不尊重，最后TMD可能两败俱伤。
+前端攻城狮和射鸡尸本来是两种物">
+<meta name="twitter:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/ui-fed-01.png">
 
 
 
@@ -123,7 +127,7 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
   };
 </script>
 
-  <title> Git Flow的工作流程 | This's BlueZhan </title>
+  <title> UI and FED | This's BlueZhan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +267,7 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
             
             
               
-                Git Flow的工作流程
+                UI and FED
               
             
           </h1>
@@ -275,8 +279,8 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-18T23:17:10+08:00" content="2016-05-18">
-              2016-05-18
+            <time itemprop="dateCreated" datetime="2016-06-05T08:05:50+08:00" content="2016-06-05">
+              2016-06-05
             </time>
           </span>
 
@@ -305,8 +309,8 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/05/18/2016-05-18/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/2016-05-18/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/06/05/UI-and-FED/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/05/UI-and-FED/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,61 +338,51 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
       
 
       
-        <h4 id="五个区域八个命令"><a href="#五个区域八个命令" class="headerlink" title="五个区域八个命令"></a>五个区域八个命令</h4><p><img src="/blog/images/git-01.01.png" alt="Alt text"></p>
-<p>Remote：远程仓库<br>Respository：本地仓库<br>Index/Stage：暂存区<br>workspace：工作区<br>stash:  贮藏区</p>
-<p>（上面图有个错误之处，暂存区git stach到贮藏区，贮藏区git stach pop回到工作区）</p>
-<h4 id="什么是-Git-Flow"><a href="#什么是-Git-Flow" class="headerlink" title="什么是 Git Flow"></a>什么是 Git Flow</h4><p>git flow简化了git的使用，并且增加了一个规范的使用方式，是git的脚本增强。<br>Gitflow 是基于 Git 的强大分支能力所构建的一套软件开发工作流，最早由 Vincent Driessen 在 2010 年提出。最有名的大概是下面这张图。</p>
-<p><img src="/blog/images/git-02.png" alt="Alt text"></p>
-<p>Gitflow 通过不同分支间的交互规划了一套软件开发、集成、部署的工作流。<br>在 Gitflow 的模型里，软件开发活动基于不同的分支：</p>
-<a id="more"></a>
-<h5 id="两种核心分支"><a href="#两种核心分支" class="headerlink" title="两种核心分支"></a>两种核心分支</h5><ul>
-<li><strong>主分支(Master)</strong>：该主分支的代码会部署到生产环境，发布代码库应该有一个、且仅有一个主分支。所有提供给用户使用的正式版本，都在这个主分支上发布。这个分支只能从其它分支合并，不能在这个分支上直接修改。需要注意的是，所有在master上的提交应该标记Tag。</li>
-<li><strong>开发主分支(Develop)</strong>：这个分支是我们是我们的主开发分支，是日常集成的分支；包含所有要发布到下一个Release的代码，这个主要合并与其他分支，比如Feature分支。该分支应该只是进行一些优化和升级开发，如果有新的需求应该拉出一个feature分支。到达稳定状态时或者需求发布时就可以合并到master，并标识Tag。</li>
-</ul>
-<h5 id="三种辅助分支"><a href="#三种辅助分支" class="headerlink" title="三种辅助分支"></a>三种辅助分支</h5><ul>
-<li><strong>功能(feature)分支</strong>：这个分支主要是用来开发一个新的功能，一旦开发完成，我们合并回Develop分支进入下一个Release。</li>
-<li><strong>预发布(release)分支</strong>：当你需要一个发布一个新Release的时候，我们基于Develop分支创建一个Release分支，完成Release后，我们合并到Master和Develop分支。</li>
-<li><strong>修补bug(hotfix)分支</strong>：当我们在Production发现新的Bug时候，我们需要创建一个Hotfix, 完成Hotfix后，我们合并回Master和Develop分支，所以Hotfix的改动会进入下一个Release。</li>
-</ul>
-<p><strong>这三种分支都属于临时性需要，使用完以后，应该删除，使得代码库的常设分支始终只有master和develop。</strong></p>
-<h4 id="分支命名规范"><a href="#分支命名规范" class="headerlink" title="分支命名规范"></a>分支命名规范</h4><ul>
-<li><strong>feature分支</strong>：以”feature_”开头，如: feature_v1.1</li>
-<li><strong>release分支</strong>：以”release_”开头，如: release_v1.1</li>
-<li><strong>hotfix分支</strong>：以”hotfix_”开头，如hotfix_20160112</li>
-<li><strong>tag标记</strong>：如果是release分支合并，则以”release<em>“开头。如果是hotfix分支合并，则以”hotfix</em>“开头。</li>
-<li><strong>master分支每次提交都要打tag，release tag</strong>：如release_v1.1，hotfix tag：如hotfix_20160112</li>
-</ul>
-<p><strong>命名都统一采用小写。</strong></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1，一定要按git flow的流程去管理分支，如feature分支开发完要合并到develop，如果要发布版本到test环境，则从develop拉出一个release分支，release完成后要合并回master和develop分支，修复生产环境问题需要从master拉出一个hotfix分支，hotfix完成后要合并回master和develop分支，并且在master打上tag。</p>
-<p>2，一定要按分支命名规范来命名，便于管理和维护。</p>
-<p>3，了解了git flow工作流程后，可以不使用git flow GUI工具，手动操作即可，可以是原生git命令+vs配合操作，比如给master打tag就要用git命令，这在vs里操作不了的，比如合并分支，虽然也可以使用git命令实现，但在vs里操作更方便直观。</p>
-<p>4，一定要保持分支的纯净，不要随便污染分支。比如，develop分支只包含要发布到下一个release的代码，在没有拉出release分支前不要合并新的feature分支进来。release分支基于develop分支创建，拉出release分支后，我们可以在这个release分支上测试和修复bug，但是，一旦打了release分支后不要从develop分支合并新的改动过来。develop拉出release分支的同时，也意味着develop分支可以开始下一个release的准备工作了。</p>
-<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="https://git-scm.com/book/zh/v2" target="_blank" rel="external">https://git-scm.com/book/zh/v2</a><br><a href="https://www.atlassian.com/git/" target="_blank" rel="external">https://www.atlassian.com/git/</a><br><a href="http://www.ituring.com.cn/article/56870" target="_blank" rel="external">http://www.ituring.com.cn/article/56870</a><br><a href="http://www.cnblogs.com/cnblogsfans/p/5075073.html" target="_blank" rel="external">http://www.cnblogs.com/cnblogsfans/p/5075073.html</a><br><a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="external">http://nvie.com/posts/a-successful-git-branching-model/</a><br><a href="http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html" target="_blank" rel="external">http://danielkummer.github.io/git-flow-cheatsheet/index.zh_CN.html</a><br><a href="http://blog.jobbole.com/76867/" target="_blank" rel="external">http://blog.jobbole.com/76867/</a><br><a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">http://rogerdudler.github.io/git-guide/index.zh.html</a><br><a href="http://scottchacon.com/2011/08/31/github-flow.html" target="_blank" rel="external">http://scottchacon.com/2011/08/31/github-flow.html</a><br><a href="http://news.cnblogs.com/n/539167/" target="_blank" rel="external">http://news.cnblogs.com/n/539167/</a><br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a></p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>大家好啦，前两篇文章轻微且不值一提的文章。</p>
+<p><a href="http://bluezhan.github.io/blog/2016/05/28/2016-05-28/" target="_blank" rel="external">《UI设计稿那些事》</a><br><a href="http://bluezhan.github.io/blog/2016/06/01/2016-06-01/" target="_blank" rel="external">《我来做个UI规范规范一下》</a></p>
+<p>哦嚯了喔~~~</p>
+<p>又过来一段时间了，我看现在大部分人都有过和UI设计师那些纠缠的过往，有时候因为布局上的多样性、像素精确性、切图协调性、需求调动性，改来改去，修来修去；弄得前端一塌糊涂，甚至UI设计师已经在怀疑这个前端的水平了；沟通不好，互不尊重，最后TMD可能两败俱伤。</p>
+<p>前端攻城狮和射鸡尸本来是两种物种，容易发生冲突。射鸡尸可能是处女座，挑剔、强迫症、完美主义；(o゜▽゜)o☆[BINGO!]。有时候场面失控，无法沟通。<br>(⊙o⊙)哦，以需求为主，实际出发，沟通沟通，没什么大不了，大家都是成年人。哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+<p>怎么才能更有效的合作呢，怎么才能高保真呢，怎么才能高质量呢，怎么才能高效呢？？？</p>
+<p>设计最重要的是交付物的最终效果，所以和工程师配合好这件事就变得至关重要。</p>
+<p>哎嘿嘿….</p>
+<h4 id="瞧这流程"><a href="#瞧这流程" class="headerlink" title="瞧这流程"></a>瞧这流程</h4><p>这里简单提到几点过程，详细的内容解说就不多提了。</p>
+<h5 id="UI基础规范"><a href="#UI基础规范" class="headerlink" title="UI基础规范"></a>UI基础规范</h5><p>有了UI基础规范，前端可以弄基础样式和基础组件，对前端开发和组织都很友好。<br>弄一套视觉UI规范，类似这样的：</p>
+<p><img src="/blog/images/ui-fed-01.png" alt="Alt text"></p>
+<p>可以看出这样能眼前一亮，能很好组织你的CSS代码；很快你就会生产出一套组件，类似这样：</p>
+<p><img src="/blog/images/ui-fed-02.png" alt="Alt text"></p>
+<p>提供完整的，规范的PSD分层文件，最好是要切图的部分就是一个图层或者 文件夹，使用photoshop的快速切图插件，单独导出图片，快速准确，不建议使用PS默认的切图工具。</p>
+<p>还有规范的设计说明文档，标注文档。</p>
+<p><img src="/blog/images/ui-fed-03.png" alt="Alt text"></p>
+<p>所有的东西都必须出效果图，并且所有团队成员达成一致，有可执行性。所有的字体，间距，颜色，必须约定统一并且完全标识清楚。</p>
+<p>杜绝直接这么说那么干的做法。</p>
+<p>要不然最后做出的产品，产品说的是一套，测试测的一套，开发的一套，老板看到的又是一套，返工的可能性很大。我感觉比起这个返工的可能呢，前面多化点把设计稿做好是无可厚非的，而且从整个项目开发周期来看，是节省开发周期的。</p>
+<h5 id="考虑需求、前端实现"><a href="#考虑需求、前端实现" class="headerlink" title="考虑需求、前端实现"></a>考虑需求、前端实现</h5><p>本应该考虑需求合理性和目的性，这里就不聊，没空，没空，暂别问…</p>
+<p>要实现网站很多效果，要知道这是前端来实现的，目前需要弄哪些效果，这个大部分要和前端沟通好。<br>你还需要让他提供一些他设计时考虑到的插件或者代码（比如设计banner时他想要视差，3D，还是滑动等效果，要用到什么插件，用了什么框架等），这样能提高前端的质量和效率。久而久之，就会明白的了。</p>
+<p>另外一个观点是从产品的高度来看，设计、前端、后端应该是一个整体，最终应该结果导向，产出的产品不好，作为开发团队其实都有责任。</p>
+<h4 id="沟通协作、一起成长"><a href="#沟通协作、一起成长" class="headerlink" title="沟通协作、一起成长"></a>沟通协作、一起成长</h4><p>坐在一起，互相沟通，减少没必要的低效沟通成本。</p>
+<p>千万别说粗口，看需求说话，对事别对人，别带上你的情绪，一个阶段做一个阶段的事情。</p>
+<p>其实难免有些前端看不惯设计图，提出自己的观点；设计师应该要给出主观和设计角度来解说。</p>
+<p>而前端看不惯是提意见，而不是不爽。如果能提出从交互或功能或体验上给建设性的意见，那会给设计师带来很好的考虑。</p>
+<p>前端应该拿到设计稿，先考虑考虑合不合理，怎么实现。不是一味以自己的观点和看法。不要忘记了产品经理或者老板或者你们部门的项目初衷，也要做好和上层的对接。</p>
+<p>前端和设计师可以互相探讨探讨对手产品，或者市面上好的产品实现，怎么改造，怎么处理，交流意见。大家交流交流一下好的设计效果和资源；从中培育协作能力和默契。</p>
+<h4 id="最后的最后"><a href="#最后的最后" class="headerlink" title="最后的最后"></a>最后的最后</h4><p>每一件事情看起来都不简单，用心去弄；好好沟通。我们都是来做事情的，有着自己的目标和理想，大家都是一起配合来完成需求。没有什么高低之分（有时候UI设计师和前端互看不起），有必要吗？很多时候都是产品、UI、前端一起讨论讨论得到了非常好的结论，更棒的效果。</p>
+<p>所以不是要前端怎么高保真去实现，什么时候出来，而且一起讨论和怎么配合。</p>
 <hr>
-<h4 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h4><ul>
-<li>master</li>
-<li>hotfixes</li>
-<li>release</li>
-<li>develop</li>
-<li>feature</li>
-</ul>
-<p>master -&gt; hotfixes</p>
-<p>feature -&gt; future feature<br>feature -&gt; next feature</p>
-<p>release -&gt; bugfixes</p>
-<p>三个分支（hotfixes、feature、release ）必须 back into develop</p>
-<p>打 Tag，每个流程都必须闭合（完整性）<br>完成必须需要打 Tag</p>
+<p>看看其别人的总结：</p>
+<blockquote>
 <ul>
-<li>大部分完成一个辅助分支的子分支都不删除</li>
-<li>（时刻记住自己在那里（父节点是谁））</li>
-<li>拉去数据或者切换分支，保持本地开发环境干净（暂存）</li>
-<li>什么是冲突（怎么会冲突）怎么解决，怎么避免</li>
+<li><p>最后的最后，前端攻城师和设计师互相提供这些需求和资源的同时：<br>在过程中试错，在试错中体验，在体验中修改优化，在修改优化中培育协作能力和感情，在协作和感情中喝杯咖啡聊聊天泡泡妹子！</p>
+</li>
+<li><p>设计师往往爱抱怨没人听他们的主意。这在你开始变得弱势后，事情仿佛越来越顺着当初的抱怨发展下去。这是一个恶性循环。我们要做的就是打开心扉虚心采纳意见，表现出应有的风度，并相信自己的想法是团队取胜的关键。</p>
+</li>
+<li><p>不要怕沟通起来，或者随时跟着进度沟通协作麻烦，其实互相交心，多沟通，大家都能开心的做好前端和设计，可以大幅度减少返修，减少加班，同时还有空一起去喝杯咖啡缓缓神！</p>
+</li>
+<li><p>你闷着头做前端不去学习或者多了解一下他的设计和他的想法，或者他闷着头做完设计从来不关心代码是啥东西，做完就丟给你，只会两败俱伤，伤感情！</p>
+</li>
 </ul>
-<p>git设置发布代码</p>
-<p>两个主分支，三个辅助分支<br>命名、打Tag<br>冲突、贮藏</p>
-<p>git 小技巧（工具使用）</p>
-<p>冲突（同一个文件一行代码，覆盖了）</p>
-<p>时间周期长冲突<br>代码不是最新的<br>（rename、旧代码大量修改）<br>什么叫基础代码<br>（在软件开发的世界里，如果一件事很痛苦，那就频繁地去做它。）</p>
-<p>git 冻结</p>
+</blockquote>
+<h4 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h4><p><a href="http://blog.jobbole.com/92988/" target="_blank" rel="external">为什么页面跟设计稿差距这么大</a><br><a href="http://blog.jobbole.com/93863/" target="_blank" rel="external">前端工程师如何与设计师合作？</a><br><a href="http://www.uisdc.com/frontend-fully-achieve-design-2" target="_blank" rel="external">这样才专业！视觉设计师怎样让前端100%实现设计效果?(2)</a><br><a href="http://www.uisdc.com/front-end-designer-cooperation#" target="_blank" rel="external">过来人的经验！前端工程师如何与设计师合作？</a><br><a href="http://design.jobbole.com/117366/" target="_blank" rel="external">前辈经验！聊聊新人设计师最容易遇到的12个问题</a></p>
 
       
     </div>
@@ -412,7 +406,7 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
           
             <a href="/blog/tags/前端/" rel="tag">#前端</a>
           
-            <a href="/blog/tags/git/" rel="tag">#git</a>
+            <a href="/blog/tags/UI/" rel="tag">#UI</a>
           
         </div>
       
@@ -421,17 +415,13 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/05/15/2016-05-15/" rel="next" title="来个CSS框架给你们">
-                <i class="fa fa-chevron-left"></i> 来个CSS框架给你们
+              <a href="/blog/2016/06/01/2016-06-01/" rel="next" title="我来做个UI规范规范一下">
+                <i class="fa fa-chevron-left"></i> 我来做个UI规范规范一下
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/05/20/2016-05-20/" rel="prev" title="日本影视">
-                日本影视 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -457,8 +447,8 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/18/2016-05-18/"
-           data-title="Git Flow的工作流程" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2016/05/18/2016-05-18/">
+      <div class="ds-thread" data-thread-key="2016/06/05/UI-and-FED/"
+           data-title="UI and FED" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2016/06/05/UI-and-FED/">
       </div>
     
   </div>
@@ -605,7 +595,7 @@ Remote：远程仓库Respository：本地仓库Index/Stage：暂存区workspace�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#五个区域八个命令"><span class="nav-number">1.</span> <span class="nav-text">五个区域八个命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是-Git-Flow"><span class="nav-number">2.</span> <span class="nav-text">什么是 Git Flow</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#两种核心分支"><span class="nav-number">2.1.</span> <span class="nav-text">两种核心分支</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三种辅助分支"><span class="nav-number">2.2.</span> <span class="nav-text">三种辅助分支</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支命名规范"><span class="nav-number">3.</span> <span class="nav-text">分支命名规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#草稿"><span class="nav-number">6.</span> <span class="nav-text">草稿</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#瞧这流程"><span class="nav-number">2.</span> <span class="nav-text">瞧这流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#UI基础规范"><span class="nav-number">2.1.</span> <span class="nav-text">UI基础规范</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#考虑需求、前端实现"><span class="nav-number">2.2.</span> <span class="nav-text">考虑需求、前端实现</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#沟通协作、一起成长"><span class="nav-number">3.</span> <span class="nav-text">沟通协作、一起成长</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后的最后"><span class="nav-number">4.</span> <span class="nav-text">最后的最后</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
           </div>
         </section>
