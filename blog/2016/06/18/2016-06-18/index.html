@@ -68,7 +68,7 @@
 <link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UI,前端," />
+  <meta name="keywords" content="前端," />
 
 
 
@@ -84,28 +84,22 @@
 
 
 
-<meta name="description" content="这里不扯UI怎么体现需求方的设计，这里就聊聊UI设计稿前端怎么切的那些事。
-起因有一天早上我来到公司，打开项目需求管理软件，多了一个需求。
-
-看到没，” 2.0 “ 。整个博客重新设计和实现，不是所谓意义上的 2.0 升级。话不多说，我拿到原型设计和设计稿就开始梳理起来；一部分一部分的列出来；头部、菜单、搜索框、内容列表、…、推荐、评论、底部；然后就看看那些可以弄成公用模块，组件化、需要什么插件，">
+<meta name="description" content="最近有个需求在购物车页面，或者数据中提交页面，用户关闭了浏览器或者跳到别的页面，应该提示，就像浏览器会问你，你确定离开吗，再次确定的意思。
+不过这里面需求加点东东，就是随便弹出了个东西，告诉用户有好东西，或者送点什么。
+思路和程序要有个监听浏览器关闭事件：看看WindowEventHandlers的一些事件：onload、onunload、beforeunload | onbeforeunload">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UI设计稿那些事">
-<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2016/05/28/2016-05-28/index.html">
+<meta property="og:title" content="监听浏览器关闭事件">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2016/06/18/2016-06-18/index.html">
 <meta property="og:site_name" content="This's BlueZhan">
-<meta property="og:description" content="这里不扯UI怎么体现需求方的设计，这里就聊聊UI设计稿前端怎么切的那些事。
-起因有一天早上我来到公司，打开项目需求管理软件，多了一个需求。
-
-看到没，” 2.0 “ 。整个博客重新设计和实现，不是所谓意义上的 2.0 升级。话不多说，我拿到原型设计和设计稿就开始梳理起来；一部分一部分的列出来；头部、菜单、搜索框、内容列表、…、推荐、评论、底部；然后就看看那些可以弄成公用模块，组件化、需要什么插件，">
-<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/28-1.png">
-<meta property="og:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/28-2.png">
-<meta property="og:updated_time" content="2016-06-05T00:13:05.939Z">
+<meta property="og:description" content="最近有个需求在购物车页面，或者数据中提交页面，用户关闭了浏览器或者跳到别的页面，应该提示，就像浏览器会问你，你确定离开吗，再次确定的意思。
+不过这里面需求加点东东，就是随便弹出了个东西，告诉用户有好东西，或者送点什么。
+思路和程序要有个监听浏览器关闭事件：看看WindowEventHandlers的一些事件：onload、onunload、beforeunload | onbeforeunload">
+<meta property="og:updated_time" content="2016-06-18T12:03:10.231Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UI设计稿那些事">
-<meta name="twitter:description" content="这里不扯UI怎么体现需求方的设计，这里就聊聊UI设计稿前端怎么切的那些事。
-起因有一天早上我来到公司，打开项目需求管理软件，多了一个需求。
-
-看到没，” 2.0 “ 。整个博客重新设计和实现，不是所谓意义上的 2.0 升级。话不多说，我拿到原型设计和设计稿就开始梳理起来；一部分一部分的列出来；头部、菜单、搜索框、内容列表、…、推荐、评论、底部；然后就看看那些可以弄成公用模块，组件化、需要什么插件，">
-<meta name="twitter:image" content="https://github.com/bluezhan/bluezhan.github.io.git/blog/images/28-1.png">
+<meta name="twitter:title" content="监听浏览器关闭事件">
+<meta name="twitter:description" content="最近有个需求在购物车页面，或者数据中提交页面，用户关闭了浏览器或者跳到别的页面，应该提示，就像浏览器会问你，你确定离开吗，再次确定的意思。
+不过这里面需求加点东东，就是随便弹出了个东西，告诉用户有好东西，或者送点什么。
+思路和程序要有个监听浏览器关闭事件：看看WindowEventHandlers的一些事件：onload、onunload、beforeunload | onbeforeunload">
 
 
 
@@ -123,7 +117,7 @@
   };
 </script>
 
-  <title> UI设计稿那些事 | This's BlueZhan </title>
+  <title> 监听浏览器关闭事件 | This's BlueZhan </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +257,7 @@
             
             
               
-                UI设计稿那些事
+                监听浏览器关闭事件
               
             
           </h1>
@@ -275,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-28T22:51:31+08:00" content="2016-05-28">
-              2016-05-28
+            <time itemprop="dateCreated" datetime="2016-06-18T19:47:53+08:00" content="2016-06-18">
+              2016-06-18
             </time>
           </span>
 
@@ -305,8 +299,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/2016/05/28/2016-05-28/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/2016-05-28/" itemprop="commentsCount"></span>
+                <a href="/blog/2016/06/18/2016-06-18/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/2016-06-18/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -334,57 +328,50 @@
       
 
       
-        <p>这里不扯UI怎么体现需求方的设计，这里就聊聊UI设计稿前端怎么切的那些事。</p>
-<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>有一天早上我来到公司，打开项目需求管理软件，多了一个需求。</p>
-<p><img src="/blog/images/28-1.png" alt="Alt text"></p>
-<p>看到没，” 2.0 “ 。整个博客重新设计和实现，不是所谓意义上的 2.0 升级。<br>话不多说，我拿到原型设计和设计稿就开始梳理起来；一部分一部分的列出来；头部、菜单、搜索框、内容列表、…、推荐、评论、底部；然后就看看那些可以弄成公用模块，组件化、需要什么插件，图片怎么处理，数据交互怎么个弄法啊，动画效果，还有兼容性，等等…</p>
-<p>（过了一段时间….）</p>
-<p>来看看我们网站的 images 文件夹吧。/(ㄒoㄒ)/~~</p>
-<p><img src="/blog/images/28-2.png" alt="Alt text"></p>
-<p>该合并的没合并，文件命名不规范，没有一套基础图标或font-awesome。</p>
-<a id="more"></a>
-<h3 id="UI到前端桥梁"><a href="#UI到前端桥梁" class="headerlink" title="UI到前端桥梁"></a>UI到前端桥梁</h3><p>在不算很久之前，也是传统一点行业的时候，一般网页设计，就是所谓“美工”、“切图仔”；甚至还会写点代码，来点HTML和CSS，甚至来点Flash。想当年网页三剑客（Dreamweaver、Fireworks、Flash）可红遍天下了。<br>后来软件行业发展迅速，网站的体现和效果要求也越来越高，再加上硬件设备提升了几个档次。一切都来得那么及时。</p>
-<p>而当用户看到的网站界面，不只是UI设计师呕心沥血创作的效果图，还有前端开发人员将设计稿一个个单独的切图经用技术实现出来。切图作为UI设计师与前端之间的桥梁，它的作用很关键，合适的切图、精准的位置可以最大限度的还原效果图的设计，精妙的切图更会有事半功倍的效果哦！</p>
-<p>从之后网页设计演变到UI设计和前端开发两个分支。</p>
-<h4 id="切图"><a href="#切图" class="headerlink" title="切图"></a>切图</h4><p>所谓手中无刀，心中有刀。<br>切图，是一切UI到前端的开始。</p>
-<p>简单的切图就是整张图片分类的输出，其中有背景图也好，横幅也好，小图片也好。最后就是一些分类出来。而背景图的处理，透明图化或者平铺的处理方式，效果图处理。<br>再到图标处理，就是平时大家会说的icon、icon、icon …<br>“点九”图片也是。<br>甚至一些效果，比如阴影啊，统一按钮样式，1px边框的特殊处理。</p>
-<p>大部分都是使用PS（photoshop）或者PS切图插件。<br>周边也有很多非常专注的工具。</p>
+        <h4 id="最近有个需求"><a href="#最近有个需求" class="headerlink" title="最近有个需求"></a>最近有个需求</h4><p>在购物车页面，或者数据中提交页面，用户关闭了浏览器或者跳到别的页面，应该提示，就像浏览器会问你，你确定离开吗，再次确定的意思。</p>
+<p>不过这里面需求加点东东，就是随便弹出了个东西，告诉用户有好东西，或者送点什么。</p>
+<h4 id="思路和程序"><a href="#思路和程序" class="headerlink" title="思路和程序"></a>思路和程序</h4><p>要有个监听浏览器关闭事件：<br>看看<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers" target="_blank" rel="external"><strong>WindowEventHandlers</strong></a>的一些事件：onload、onunload、beforeunload | onbeforeunload event</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Events/unload" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/Events/unload</a></p>
+<p>Related Events</p>
 <ul>
-<li><a href="http://www.cutterman.cn/" target="_blank" rel="external">Cutterman</a></li>
-<li><a href="http://witstudio.net/" target="_blank" rel="external">Assistor PS </a></li>
-<li><a href="http://www.cutandslice.me/" target="_blank" rel="external">Cut&amp;Slice me</a></li>
-<li><a href="http://devrocket.uiparade.com/" target="_blank" rel="external">DevRocket</a></li>
-<li><a href="http://macrabbit.com/slicy" target="_blank" rel="external">Slicy</a></li>
+<li>DOMContentLoaded</li>
+<li>readystatechange</li>
+<li>load</li>
+<li>beforeunload</li>
+<li>unload</li>
 </ul>
-<h4 id="CSS精灵图"><a href="#CSS精灵图" class="headerlink" title="CSS精灵图"></a>CSS精灵图</h4><p>CSS Sprites其实就是把网页中一些背景图片整合拼合成一张图片中，再利用DIV CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position可以用数字能精确的定位出背景图片在布局盒子对象位置。</p>
-<p>CSS Sprites适用小图标icon类素材，一般图标很小十多像素几十像素的宽度高度；且很少局部更新。</p>
-<p><strong>优点</strong></p>
-<p>减少http iis请求数，提升了网站性能，同时也减少图片文件数目。</p>
-<p><strong>缺点</strong></p>
-<p>图片合并比较麻烦，要留出合理空间，即不出现干扰图片的情况，且又不能极大浪费空间；如需更新，尤其是改动，比较繁琐。由于图片的位置需要固定为某个绝对数值，这就失去了诸如center之类的灵活性。</p>
-<p><strong>小结</strong>（<a href="http://www.divcss5.com/rumen/r767.shtml" target="_blank" rel="external">DIVCSS5推荐小结</a>）</p>
-<p>犹豫拼接图片需要一定经验技巧（做实践即可快速掌握）、测量定位数值、修改不是那么灵活等原因，一般小网站站、小流量网站、一般企业网站不是很推荐使用CSS Sprites，因为使用CSS Sprites会比普通单个背景图片布局要耗费时间和精力，所以不是很推荐小站。但这个布局技巧也必须要学会掌握灵活布局才是目的。小站HTTP请求数丰富这点拼接其实也起不来什么优势反而会浪费宝贵时间。相反大网站大流量网站推荐使用，这样比较值得。</p>
-<p><strong>在线生成工具</strong></p>
-<ul>
-<li><a href="http://spritegen.website-performance.org/" target="_blank" rel="external">http://spritegen.website-performance.org/</a></li>
-<li><a href="http://cn.spritegen.website-performance.org/" target="_blank" rel="external">http://cn.spritegen.website-performance.org/</a></li>
-</ul>
-<h4 id="font-awesome"><a href="#font-awesome" class="headerlink" title="font-awesome"></a>font-awesome</h4><p>一个大型网站小图标处处可见，对前端开发人员来说，对这样的小图标都需要像对图片一样来处理多麽繁琐。有人说不是可以用CSS Sprites吗？哦啊<br>可是如果颜色不只是黑白或者一种颜色呢，如果大小不一致呢；你会发现，前端人员会崩溃死的，将在这上面耗费大量资源和精力。</p>
-<p>我们来看看这个玩意，它拥有将近600个常用icon图标（不断更新中），可使用CSS控制样式，包括大小、颜色、阴影等等，而且还开源，甚至完全免费，大公司都用。你说这玩意好不好 … </p>
-<p>Font Awesome 是一款可缩放的矢量图标字库，你可以利用CSS将Font Awesome发挥到极致，包括：大小、颜色、阴影或者其它任何支持的效果。</p>
-<p>它的缺点是：<br>1、对IE6等浏览器兼容性不是很好，不过最新版本的Font Awesome和IE7完美兼容。<br>2、要想用fontawesome，需要引入相关的字体文件，增加了网页大小。</p>
-<p>可以关注一下阿里巴巴的<a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a>，也是个不错的东西，可对比一下它和font-awesome的优缺点。</p>
-<h4 id="标注、测量"><a href="#标注、测量" class="headerlink" title="标注、测量"></a>标注、测量</h4><p>UI设计师将设计稿给到前端开发，最好做好标注和测量。前端才会更好更方便地处理，而且高保真地产出页面。</p>
-<p>前端开发中会很好把握哪些样式要提炼出来，哪些要弄成组件。</p>
-<ul>
-<li><a href="http://www.fancynode.com.cn/" target="_blank" rel="external">PxCook</a></li>
-<li><a href="http://www.getmarkman.com/" target="_blank" rel="external">Markman</a></li>
-<li><a href="https://www.specctr.com/" target="_blank" rel="external">Specctr</a></li>
-</ul>
-<h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>Photoshop 大部分插件<br>AI、SK、CODR<br>切图工具 Cutterman<br>标注、测量工具 Markman<br>标注神器 parker<br>图标素材库 Nicon<br>逼格神器 bigger</p>
-<p>IOS热粉：sketch设计</p>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>UI设计-百度百科<br>安卓UI设计系列知识(三)（设计经验谈）<br><a href="http://caniuse.com/" target="_blank" rel="external">http://caniuse.com/</a><br><a href="https://render.ly/" target="_blank" rel="external">https://render.ly/</a><br><a href="http://blog.darkwark.com/transformEach21/" target="_blank" rel="external">http://blog.darkwark.com/transformEach21/</a></p>
-<p>（后续更新中…）<br>最近忙着弄个实践操作流程</p>
+<pre><code>window.onbeforeunload = onbeforeunload_handler;
+window.onunload = onunload_handler;
+
+function onbeforeunload_handler() {
+  var warning = &quot;5555555&quot;;
+  // return warning;
+  return null;
+}
+
+function onunload_handler() {
+  var warning = &quot;谢谢光临&quot;;
+  // alert(warning);
+}
+</code></pre><p><strong>在方法里将会截止使用资源加载，不能异步，就是不能执行一些JavaScript，比如：setTimeout，加载资源（js、css、img）</strong></p>
+<p> window.onbeforeunload被触发，是因为页面被退出：用户行为关闭浏览器，刷新页面， &lt; a &gt;标签跳转，window.close();</p>
+<h4 id="来自飞尘-IT草："><a href="#来自飞尘-IT草：" class="headerlink" title="来自飞尘@IT草："></a>来自飞尘@IT草：</h4><p>通过window.onbeforeunload方法，我们可以在用户离开当前页面时进行提示，通常情况是用户输入了某些内容而没有及时保存。</p>
+<p>经常地，我们会被告知，onbeforeunload方法并不是所有的浏览器都支持的，的确是的。但是这并不影响我们对它的使用，因为主流的浏览器，或者说90%的浏览器都是支持的。</p>
+<p>下面是引用mozilla社区关于onbeforeunload的浏览器支持情况</p>
+<pre><code>Feature    Chrome    Firefox (Gecko)    Internet Explorer Opera    Safari (WebKit)
+Basic support    1    1    4    12    3
+</code></pre><p>个人测试下来，如果使用的是基于Presto内核的opera，即使最新版12.15仍然是不支持的，需要使用基于WebKit内核的opera next才可以支持。对于safari已经停止windows平台版本的开发，历史的东西就让它属于历史吧</p>
+<p>更多关于onbeforeunload的描述可以看看mozilla的开发文档<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.onbeforeunload" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/window.onbeforeunload</a></p>
+<p>微软也有相关的介绍<br><a href="http://msdn.microsoft.com/en-us/library/ms536907(v=vs.85).aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/library/ms536907(v=vs.85).aspx</a></p>
+<p>接着要特别指出的是，正确使用onbeforeunload才能达到理想的效果</p>
+<pre><code>window.onbeforeunload = function(e) {
+return ‘Dialog text here.’;
+};
+</code></pre><p>我们经常会看到如下的写法</p>
+<pre><code>window.onbeforeunload = function(e) {
+window.event.returnValue = “确定离开当前页面吗？”;
+};
+</code></pre><p>这样的写法是有局限性的，IE、chrome是有效的，而在firefox、opera next下是无效的。</p>
 
       
     </div>
@@ -406,8 +393,6 @@
       
         <div class="post-tags">
           
-            <a href="/blog/tags/UI/" rel="tag">#UI</a>
-          
             <a href="/blog/tags/前端/" rel="tag">#前端</a>
           
         </div>
@@ -417,17 +402,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2016/05/27/2016-05-27/" rel="next" title="谈旅游和我">
-                <i class="fa fa-chevron-left"></i> 谈旅游和我
+              <a href="/blog/2016/06/10/2016-06-10/" rel="next" title="我那些观看电影的往事">
+                <i class="fa fa-chevron-left"></i> 我那些观看电影的往事
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2016/06/01/2016-06-01/" rel="prev" title="我来做个UI规范规范一下">
-                我来做个UI规范规范一下 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -453,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/28/2016-05-28/"
-           data-title="UI设计稿那些事" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2016/05/28/2016-05-28/">
+      <div class="ds-thread" data-thread-key="2016/06/18/2016-06-18/"
+           data-title="监听浏览器关闭事件" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2016/06/18/2016-06-18/">
       </div>
     
   </div>
@@ -601,7 +582,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#起因"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI到前端桥梁"><span class="nav-number">2.</span> <span class="nav-text">UI到前端桥梁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#切图"><span class="nav-number">2.1.</span> <span class="nav-text">切图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS精灵图"><span class="nav-number">2.2.</span> <span class="nav-text">CSS精灵图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#font-awesome"><span class="nav-number">2.3.</span> <span class="nav-text">font-awesome</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标注、测量"><span class="nav-number">2.4.</span> <span class="nav-text">标注、测量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工具"><span class="nav-number">2.5.</span> <span class="nav-text">工具</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#最近有个需求"><span class="nav-number">1.</span> <span class="nav-text">最近有个需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路和程序"><span class="nav-number">2.</span> <span class="nav-text">思路和程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#来自飞尘-IT草："><span class="nav-number">3.</span> <span class="nav-text">来自飞尘@IT草：</span></a></li></ol></div>
             
           </div>
         </section>

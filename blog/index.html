@@ -253,6 +253,169 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2016/06/18/2016-06-18/" itemprop="url">
+                  监听浏览器关闭事件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-18T19:47:53+08:00" content="2016-06-18">
+              2016-06-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/06/18/2016-06-18/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/18/2016-06-18/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="最近有个需求"><a href="#最近有个需求" class="headerlink" title="最近有个需求"></a>最近有个需求</h4><p>在购物车页面，或者数据中提交页面，用户关闭了浏览器或者跳到别的页面，应该提示，就像浏览器会问你，你确定离开吗，再次确定的意思。</p>
+<p>不过这里面需求加点东东，就是随便弹出了个东西，告诉用户有好东西，或者送点什么。</p>
+<h4 id="思路和程序"><a href="#思路和程序" class="headerlink" title="思路和程序"></a>思路和程序</h4><p>要有个监听浏览器关闭事件：<br>看看<a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers" target="_blank" rel="external"><strong>WindowEventHandlers</strong></a>的一些事件：onload、onunload、beforeunload | onbeforeunload event</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Events/unload" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/Events/unload</a></p>
+<p>Related Events</p>
+<ul>
+<li>DOMContentLoaded</li>
+<li>readystatechange</li>
+<li>load</li>
+<li>beforeunload</li>
+<li>unload</li>
+</ul>
+<pre><code>window.onbeforeunload = onbeforeunload_handler;
+window.onunload = onunload_handler;
+
+function onbeforeunload_handler() {
+  var warning = &quot;5555555&quot;;
+  // return warning;
+  return null;
+}
+
+function onunload_handler() {
+  var warning = &quot;谢谢光临&quot;;
+  // alert(warning);
+}
+</code></pre><p><strong>在方法里将会截止使用资源加载，不能异步，就是不能执行一些JavaScript，比如：setTimeout，加载资源（js、css、img）</strong></p>
+<p> window.onbeforeunload被触发，是因为页面被退出：用户行为关闭浏览器，刷新页面， &lt; a &gt;标签跳转，window.close();</p>
+<h4 id="来自飞尘-IT草："><a href="#来自飞尘-IT草：" class="headerlink" title="来自飞尘@IT草："></a>来自飞尘@IT草：</h4><p>通过window.onbeforeunload方法，我们可以在用户离开当前页面时进行提示，通常情况是用户输入了某些内容而没有及时保存。</p>
+<p>经常地，我们会被告知，onbeforeunload方法并不是所有的浏览器都支持的，的确是的。但是这并不影响我们对它的使用，因为主流的浏览器，或者说90%的浏览器都是支持的。</p>
+<p>下面是引用mozilla社区关于onbeforeunload的浏览器支持情况</p>
+<pre><code>Feature    Chrome    Firefox (Gecko)    Internet Explorer Opera    Safari (WebKit)
+Basic support    1    1    4    12    3
+</code></pre><p>个人测试下来，如果使用的是基于Presto内核的opera，即使最新版12.15仍然是不支持的，需要使用基于WebKit内核的opera next才可以支持。对于safari已经停止windows平台版本的开发，历史的东西就让它属于历史吧</p>
+<p>更多关于onbeforeunload的描述可以看看mozilla的开发文档<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/window.onbeforeunload" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/API/window.onbeforeunload</a></p>
+<p>微软也有相关的介绍<br><a href="http://msdn.microsoft.com/en-us/library/ms536907(v=vs.85).aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/library/ms536907(v=vs.85).aspx</a></p>
+<p>接着要特别指出的是，正确使用onbeforeunload才能达到理想的效果</p>
+<pre><code>window.onbeforeunload = function(e) {
+return ‘Dialog text here.’;
+};
+</code></pre><p>我们经常会看到如下的写法</p>
+<pre><code>window.onbeforeunload = function(e) {
+window.event.returnValue = “确定离开当前页面吗？”;
+};
+</code></pre><p>这样的写法是有局限性的，IE、chrome是有效的，而在firefox、opera next下是无效的。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2016/06/10/2016-06-10/" itemprop="url">
                   我那些观看电影的往事
                 </a>
@@ -1397,129 +1560,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2016/05/15/2016-05-15/" itemprop="url">
-                  来个CSS框架给你们
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-15T22:51:31+08:00" content="2016-05-15">
-              2016-05-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2016/05/15/2016-05-15/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/2016-05-15/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>我还是那个自己，依然还活着；还能写着代码，还一样需要加班，还时不时和产品对骂几句。<br>欧欧，没啦；说笑。我年后回到广州找到一家公司，是弄电商的，固然就是负责电商网站的开发；话不多说，我们来看看吧。</p>
-<h4 id="瞅一瞅这网站"><a href="#瞅一瞅这网站" class="headerlink" title="瞅一瞅这网站"></a>瞅一瞅这网站</h4><p><a href="http://www.yoins.com/">点我吧</a><br>后台一致使用 PHP 搞（谁让它是世界上最好的语言呢），后端语言参与渲染HTML，这一招很主流。对HTML代码的组织都由PHP的Smarty模板引擎来处理，只不过需要写一堆CSS样式；只有在控件或者Form表单提交才来点JavaScript。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/2016/05/15/2016-05-15/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1565,7 +1605,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
