@@ -1,0 +1,791 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="当年的公众号2012年微信推出了公众号，而市面在2013年中大热推出各色公众号第三方平台。从2014下半年起，各种H5游戏和专题页纷纷崭露头角。“H5”，这个由HTML5简化而来的词汇，借由微信这个移动社交平台，正在走进更多人的视野。本文聚焦于基于微信传播的H5页面的视觉设计，通过一些案例分析来谈谈设计思路与方法，希望与大家进行交流探讨。
+微信公众号，营销代有手段出，各领风骚数百天。要说现在哪些营">
+<meta property="og:type" content="article">
+<meta property="og:title" content="看看市面上H5页面的姿态">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2015/04/05/2015-04-05/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="当年的公众号2012年微信推出了公众号，而市面在2013年中大热推出各色公众号第三方平台。从2014下半年起，各种H5游戏和专题页纷纷崭露头角。“H5”，这个由HTML5简化而来的词汇，借由微信这个移动社交平台，正在走进更多人的视野。本文聚焦于基于微信传播的H5页面的视觉设计，通过一些案例分析来谈谈设计思路与方法，希望与大家进行交流探讨。
+微信公众号，营销代有手段出，各领风骚数百天。要说现在哪些营">
+<meta property="og:updated_time" content="2016-11-01T14:22:05.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="看看市面上H5页面的姿态">
+<meta name="twitter:description" content="当年的公众号2012年微信推出了公众号，而市面在2013年中大热推出各色公众号第三方平台。从2014下半年起，各种H5游戏和专题页纷纷崭露头角。“H5”，这个由HTML5简化而来的词汇，借由微信这个移动社交平台，正在走进更多人的视野。本文聚焦于基于微信传播的H5页面的视觉设计，通过一些案例分析来谈谈设计思路与方法，希望与大家进行交流探讨。
+微信公众号，营销代有手段出，各领风骚数百天。要说现在哪些营">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 看看市面上H5页面的姿态 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                看看市面上H5页面的姿态
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-04-05T15:01:21+08:00" content="2015-04-05">
+              2015-04-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2015/04/05/2015-04-05/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/05/2015-04-05/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="当年的公众号"><a href="#当年的公众号" class="headerlink" title="当年的公众号"></a>当年的公众号</h3><p>2012年微信推出了公众号，而市面在2013年中大热推出各色公众号第三方平台。<br>从2014下半年起，各种H5游戏和专题页纷纷崭露头角。“H5”，这个由HTML5简化而来的词汇，借由微信这个移动社交平台，正在走进更多人的视野。本文聚焦于基于微信传播的H5页面的视觉设计，通过一些案例分析来谈谈设计思路与方法，希望与大家进行交流探讨。</p>
+<p>微信公众号，营销代有手段出，各领风骚数百天。要说现在哪些营销方式最能传播，屡屡刷爆朋友圈的H5页面肯定就是首当其冲的，提到H5页面，就立马想到“围住神经猫”，上线微信朋友圈3天的时间便创造了用户500万，访问量超1亿的神话。</p>
+<p>H5如此势头，不得不让营销人对H5页面的未来充满了期待，越来越多的人开始在营销中运用H5页面。其实在移动端各个领域，H5页面的叫法很多，也会称为翻翻看、手机微杂志、广告页、场景应用、海报\画报(动态海报、指尖海报、掌中海报、动画海报、微画报、微海报)等等，经常能见到的就是滑动翻页。</p>
+<p>然而大企业大公司的土豪都在利用自己强大资源和技术比拼H5场景页面，一些小企业或普通独立营销者就只能眼巴巴看着吗？NO，实力差点技术差点效果差点，但是我们也能做。下面木木就给大家推荐一些H5场景页面免费制作神器来，排名不分先后！</p>
+<p>你们肯定看过：小游戏、邀请函、贺卡、招聘、各种节日、公司活动、测试题、拼购、品牌宣传、海报等等这些类似新式模式的H5页面。</p>
+<p>这就出现个了H5，这个东东了。</p>
+<a id="more"></a>
+<h3 id="看看H5出现之前和它相似的东东"><a href="#看看H5出现之前和它相似的东东" class="headerlink" title="看看H5出现之前和它相似的东东"></a>看看H5出现之前和它相似的东东</h3><p>我们来看看之前认识的一样东西，APP的引导页、页面滚动、PPT、杂志、广告…..</p>
+<p>新媒体，营运，市场推广</p>
+<p>操作（互动）+  展示（静态、动态）</p>
+<h3 id="万变不离其宗在"><a href="#万变不离其宗在" class="headerlink" title="万变不离其宗在"></a>万变不离其宗在</h3><p>提到这些HTML5技术只是冰山一角；它将延伸出很多产品。</p>
+<p>开发语言：HTML5 + CSS3 + JavaScript<br>常用标签：video、 audio、 canvas、 svg …..</p>
+<p>定位，存储（浏览器本地存储）</p>
+<p>碎片化：尺寸、兼容</p>
+<p>平台：微信（占大部分）<br>随着支付宝十年账单、QQ时光机刷屏朋友圈，H5页面开始进入我们的眼球，本文将依次介绍H5页面的优点、页面类型、页面形式，并分享H5页面的设计技巧与H5用户行为数据。</p>
+<p>H5页面的优点：</p>
+<p>1.开发周期短</p>
+<p>2.传播范围广速度快</p>
+<p>3.更新迭代成本小</p>
+<p>4.形式丰富</p>
+<p>大家知道 h5页面和普通页面的区别 吗？不知道的话就随乔布 简历 小编来看看 普通页面和h5页面的区别 吧！</p>
+<p>关键词： h5页面和普通页面的区别 ， 普通页面和h5页面的区别</p>
+<p>在说h5页面之前，我们先来粗略了解一下h5是什么吧！h5，也就是html5，代表的是万维网的核心语言、标准通用标记语言下的一个应用超文本标记语言（html）的第五次重大修改。<br>经过几乎8年的艰辛努力万维网联盟在2014年10月底宣布了html5标准规范已完成，并已公开发布。</p>
+<p>在这之前的几年时间里，irefox、Google Chrome、Opera、Safari 4+、Internet Explorer 9+等都逐渐使用了html5的部分技术，都已支持html5。html5是有望成为梦想中的“开放Web平台”的基石，如能实现可以进一步推动更深入的跨平台Web应用的。</p>
+<p>h5页面和普通页面的区别，以微信内置浏览器和手机上的浏览器应用（safari、chrome）为例</p>
+<p>1、最突出的差别，前端要注意分享功能，上线之前，每个页面基本都要review一边分享功能是不是完善的。</p>
+<p>2、html5接口上的不同。safari和chrome的话提供的html5接口会更多，而微信内置浏览器的接口比较少，印象最深的是usermedia。前几天在项目里还发现，微信里固定定位的支持还是不够好，safari在这点上现在好很多了。所以如果想让 web 应用在微信里体验更好一些的话，iscroll类的模块是免不了的。</p>
+<p>3、微信浏览器的兼容性问题，在android上比较明显。印象比较深的是三星的机型上不支持background-size-cover，必须使用-webkit-background-size才行。</p>
+<p>4、开发、调试的问题。android chrome比较好，有远程调试功能。微信里面基本木有办法。遇到棘手的问题，一般会使用modernizr来做特性检测，或者使用远程log工具调试。</p>
+<h3 id="列出市场这些有关H5的知识"><a href="#列出市场这些有关H5的知识" class="headerlink" title="列出市场这些有关H5的知识"></a>列出市场这些有关H5的知识</h3><ul>
+<li><a href="http://isux.tencent.com/great-mobile-h5-pages.html" target="_blank" rel="external">那些过目不忘的H5页面</a></li>
+<li><a href="http://www.tmtpost.com/192602.html" target="_blank" rel="external">微信让H5火了，但 H5 营销需小心七大误区</a></li>
+<li><a href="http://www.chinaz.com/design/2015/1103/465670.shtml" target="_blank" rel="external">移动端H5页面的设计稿尺寸（上）</a></li>
+<li><a href="http://www.51testing.com/html/34/361634-864025.html" target="_blank" rel="external">H5页面测试总结</a></li>
+<li><a href="http://www.cocoachina.com/webapp/20150715/12585.html" target="_blank" rel="external">解惑好文：移动端H5页面高清多屏适配方案</a></li>
+<li><a href="http://gupowang.baijia.baidu.com/article/150717" target="_blank" rel="external">腾讯、京东、欧莱雅教你如何通过H5页面走入用户内心</a></li>
+<li><a href="http://www.25xt.com/html5css3/8919.html" target="_blank" rel="external">四种webAPP横向滑动模式图解—H5页面开发</a></li>
+<li><a href="http://www.mamicode.com/info-detail-516462.html" target="_blank" rel="external">浅谈h5移动端页面的适配问题</a></li>
+<li><a href="http://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="external">使用Flexible实现手淘H5页面的终端适配</a></li>
+<li><a href="http://www.meihua.info/a/65811" target="_blank" rel="external">爆款H5是如何炼成的？</a></li>
+<li><a href="http://www.51lianying.com/news-2118.html" target="_blank" rel="external">H5页面做好了，从哪里来流量</a></li>
+<li><a href="http://mt.sohu.com/20160203/n436774867.shtml" target="_blank" rel="external">H5页面制作 没你想象的那么简单</a></li>
+<li><a href="http://www.iliuye.com/index.php/Wap/Index/article/id/201707" target="_blank" rel="external">H5页面想要引爆朋友圈究竟靠什么？</a></li>
+<li><a href="http://www.csdn.net/article/2015-04-20/2824515-tencent-ued/3" target="_blank" rel="external">腾讯网移动端H5页面设计实战分享</a></li>
+<li><a href="https://www.zhihu.com/question/30363342" target="_blank" rel="external">H5页面是什么意思？html5</a></li>
+<li><a href="http://www.jianshu.com/p/4b9070b670c2" target="_blank" rel="external">找不同——原生APP &amp; H5页面</a></li>
+<li><a href="http://www.meihua.info/a/65345" target="_blank" rel="external">世纪难题：H5做好了，流量哪里来？</a></li>
+<li><a href="http://www.open-open.com/lib/view/open1449325854077.html" target="_blank" rel="external">H5项目常见问题汇总及解决方案</a></li>
+<li><a href="http://www.360doc.com/content/16/0205/01/29351445_532796561.shtml" target="_blank" rel="external">H5营销干货大全！也是蛮拼的！</a></li>
+<li><a href="http://www.uisdc.com/tencent-html5-design-practice" target="_blank" rel="external">春雨先知！腾讯移动端H5页面设计实战分享</a></li>
+<li><a href="http://money.163.com/15/1123/11/B93Q61LJ00253B0H.html" target="_blank" rel="external">移企秀：微信捧红H5页面 但营销还得靠创意</a></li>
+<li><a href="http://www.cnblogs.com/xiaoheimiaoer/p/4535676.html" target="_blank" rel="external">H5页面音频自动播放问题</a></li>
+<li><a href="http://news.gamedog.cn/a/20141221/829513.html" target="_blank" rel="external">H5游戏不是网页游戏 殊途也不同归</a></li>
+<li><a href="https://my.oschina.net/CandyDesire/blog/510494" target="_blank" rel="external">H5性能优化方案</a></li>
+<li><a href="http://www.ibeaconworld.cn/10674.html" target="_blank" rel="external">微信动态：怎么玩转H5页面获取周边设备接口（微信新玩意，你一定要学习撒）</a></li>
+<li><a href="http://games.qq.com/a/20160331/042906.htm" target="_blank" rel="external">数据 | 移动页面用户行为报告：H5页面平均分享率为3.93%</a></li>
+<li><a href="http://www.cnblogs.com/PeunZhang/" target="_blank" rel="external">白树博客</a></li>
+<li><a href="http://my.oschina.net/lpe234/blog/477597" target="_blank" rel="external">移动端H5开发入门</a></li>
+<li><a href="http://www.iguoguo.net/html5" target="_blank" rel="external">爱果果</a></li>
+<li><a href="https://www.zhihu.com/topic/19557564" target="_blank" rel="external">知乎HTML5</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2015/03/05/2015-03-05/" rel="next" title="谈谈基于微信的HTML5开发的实践">
+                <i class="fa fa-chevron-left"></i> 谈谈基于微信的HTML5开发的实践
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2015/04/12/2015-04-12/" rel="prev" title="整理别人工作三年多多少少有些感悟">
+                整理别人工作三年多多少少有些感悟 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/04/05/2015-04-05/"
+           data-title="看看市面上H5页面的姿态" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2015/04/05/2015-04-05/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆器</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/bluezhan" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/lanryzhan" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#当年的公众号"><span class="nav-number">1.</span> <span class="nav-text">当年的公众号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#看看H5出现之前和它相似的东东"><span class="nav-number">2.</span> <span class="nav-text">看看H5出现之前和它相似的东东</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#万变不离其宗在"><span class="nav-number">3.</span> <span class="nav-text">万变不离其宗在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出市场这些有关H5的知识"><span class="nav-number">4.</span> <span class="nav-text">列出市场这些有关H5的知识</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
