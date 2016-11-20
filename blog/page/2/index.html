@@ -267,7 +267,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-18T23:17:10+08:00" content="2016-05-18">
+            <time itemprop="dateCreated" datetime="2016-05-18T23:17:10-07:00" content="2016-05-18">
               2016-05-18
             </time>
           </span>
@@ -394,7 +394,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-15T22:51:31+08:00" content="2016-05-15">
+            <time itemprop="dateCreated" datetime="2016-05-15T22:51:31-07:00" content="2016-05-15">
               2016-05-15
             </time>
           </span>
@@ -517,7 +517,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T21:54:53+08:00" content="2016-05-11">
+            <time itemprop="dateCreated" datetime="2016-05-11T21:54:53-07:00" content="2016-05-11">
               2016-05-11
             </time>
           </span>
@@ -642,7 +642,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-11T21:50:53+08:00" content="2016-05-11">
+            <time itemprop="dateCreated" datetime="2016-05-11T21:50:53-07:00" content="2016-05-11">
               2016-05-11
             </time>
           </span>
@@ -761,6 +761,137 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2015/05/12/2015-05-12/" itemprop="url">
+                  关于新浪微博的那些前端知识
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-05-12T23:24:07-07:00" content="2015-05-12">
+              2015-05-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2015/05/12/2015-05-12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/12/2015-05-12/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>大概在2年前，我在查看新浪微博web源码的时候，记得发现他们在对前端文件的压缩方式很有印象。</p>
+<p>我们来看看这JavaScript文件请求链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://g.alicdn.com/kissy/k/1.4.2/??event-min.js,event/dom/base-min.js,event/base-min.js,dom/base-min.js,event/dom/shake-min.js,event/dom/focusin-min.js,event/custom-min.js,node-min.js,anim-min.js,anim/base-min.js,promise-min.js,anim/timer-min.js,anim/transition-min.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://g.alicdn.com/kissy/k/1.4.2/??cookie-min.js,overlay-min.js,component/container-min.js,component/control-min.js,base-min.js,component/manager-min.js,xtemplate/runtime-min.js,component/extension/shim-min.js,component/extension/align-min.js,component/extension/content-xtpl-min.js,component/extension/content-render-min.js</span><br></pre></td></tr></table></figure>
+<p>是的，我们现在看到是这里面有个字眼 <code>kissy</code> ；这不难说，因为新浪微博被阿里承包了，固然会推广使用了阿里的技术。</p>
+<p>这不是重点，在新浪微博易主之前它也是这样弄的。</p>
+<p>就是这条链接放置所要请求的JavaScript并将它们一起合并了。</p>
+<p>我当时一脸懵逼，怎么这么吊，而且我当时是在用 Node 的相关压缩处理方式或工具，比如 r.js、grunt、gulp等等。</p>
+<p>这不难看出，这是服务器或者框架那边做了文件逻辑处理。</p>
+<p>好啦，简简单单谈个开始，我们再聊聊新浪微博的其它前端实现的知识。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/2015/05/12/2015-05-12/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2015/04/18/2015-04-18/" itemprop="url">
                   收集web前端一些好赞好赞的文章
                 </a>
@@ -775,7 +906,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-18T20:01:55+08:00" content="2015-04-18">
+            <time itemprop="dateCreated" datetime="2015-04-18T20:01:55-07:00" content="2015-04-18">
               2015-04-18
             </time>
           </span>
@@ -906,7 +1037,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-12T09:02:12+08:00" content="2015-04-12">
+            <time itemprop="dateCreated" datetime="2015-04-12T09:02:12-07:00" content="2015-04-12">
               2015-04-12
             </time>
           </span>
@@ -1048,7 +1179,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-04-05T15:01:21+08:00" content="2015-04-05">
+            <time itemprop="dateCreated" datetime="2015-04-05T15:01:21-07:00" content="2015-04-05">
               2015-04-05
             </time>
           </span>
@@ -1187,7 +1318,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-03-05T23:34:34+08:00" content="2015-03-05">
+            <time itemprop="dateCreated" datetime="2015-03-05T23:34:34-08:00" content="2015-03-05">
               2015-03-05
             </time>
           </span>
@@ -1324,7 +1455,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/blog/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
