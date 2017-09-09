@@ -1,0 +1,768 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="原文出处：Quick Introduction to Vue.js — Super Mario Pixel Art
+
+::代码我已经归纳在github上：vue2-pixel-art::
+
+最近有人问我为什么选择使用Vue.js来实现我们公司的第一款产品。哈哈哈，并不是每个人都有机会去探索Vue.js的；使用在这里，我先可以通过写一个简简单单的Vue.js例子来快速介绍它，将让大家对Vue.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue.js快速介绍-超级马里奥像素艺术">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2017/09/03/vue-pixel-art/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="原文出处：Quick Introduction to Vue.js — Super Mario Pixel Art
+
+::代码我已经归纳在github上：vue2-pixel-art::
+
+最近有人问我为什么选择使用Vue.js来实现我们公司的第一款产品。哈哈哈，并不是每个人都有机会去探索Vue.js的；使用在这里，我先可以通过写一个简简单单的Vue.js例子来快速介绍它，将让大家对Vue.js">
+<meta property="og:image" content="https://github.com/itemsets/vue2-pixel-art/raw/master/image/1.jpeg">
+<meta property="og:image" content="https://github.com/itemsets/vue2-pixel-art/raw/master/image/2.gif">
+<meta property="og:image" content="https://github.com/itemsets/vue2-pixel-art/raw/master/image/3.png">
+<meta property="og:image" content="https://github.com/itemsets/vue2-pixel-art/raw/master/image/4.png">
+<meta property="og:updated_time" content="2017-09-09T14:15:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue.js快速介绍-超级马里奥像素艺术">
+<meta name="twitter:description" content="原文出处：Quick Introduction to Vue.js — Super Mario Pixel Art
+
+::代码我已经归纳在github上：vue2-pixel-art::
+
+最近有人问我为什么选择使用Vue.js来实现我们公司的第一款产品。哈哈哈，并不是每个人都有机会去探索Vue.js的；使用在这里，我先可以通过写一个简简单单的Vue.js例子来快速介绍它，将让大家对Vue.js">
+<meta name="twitter:image" content="https://github.com/itemsets/vue2-pixel-art/raw/master/image/1.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Vue.js快速介绍-超级马里奥像素艺术 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vue.js快速介绍-超级马里奥像素艺术
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-03T20:50:53+08:00" content="2017-09-03">
+              2017-09-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/09/03/vue-pixel-art/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/03/vue-pixel-art/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>原文出处：<a href="https://medium.com/nepfin-engineering/quick-introduction-to-vue-js-super-mario-pixel-art-5ad01440663" target="_blank" rel="external">Quick Introduction to Vue.js — Super Mario Pixel Art</a></p>
+</blockquote>
+<p>::代码我已经归纳在github上：<a href="https://github.com/itemsets/vue2-pixel-art">vue2-pixel-art</a>::</p>
+<p><img src="https://github.com/itemsets/vue2-pixel-art/raw/master/image/1.jpeg" alt=""></p>
+<p>最近有人问我为什么选择使用Vue.js来实现我们公司的第一款产品。哈哈哈，并不是每个人都有机会去探索Vue.js的；使用在这里，我先可以通过写一个简简单单的Vue.js例子来快速介绍它，将让大家对Vue.js有着很好认识和了解，希望这些能给大家有所帮助。</p>
+<p><img src="https://github.com/itemsets/vue2-pixel-art/raw/master/image/2.gif" alt=""></p>
+<p>绘制图形可能不是Vue.js最受欢迎的用例，甚至很多市场上的Demo都很少有关绘制图形的；但在这篇文章中，我想用绘制图形来举一个例子，我想其他人已经在github上发现这个非常乐趣并好玩的动sai – 超级马里奥像素艺术（灵感来自Github<a href="https://github.com/gmattie/Data-Pixels">Data-Pixels</a>），它绘制许多像素，当点击其中一个像素时，周边相似的都会随之而改变。<br>哦，我们这里不是使用canvas来说实现的，是使用了div。</p>
+<p>在这里我使用了Vue.js来改写，用Vue.js的方法来绘制和更新颜色，感觉超级棒棒的。</p>
+<a id="more"></a>
+<h3 id="构建两个Vue组件"><a href="#构建两个Vue组件" class="headerlink" title="构建两个Vue组件"></a>构建两个Vue组件</h3><p>在开始编写代码之前，我就构建了两个Vue组件来实现这个图形：</p>
+<ul>
+<li>pixel.vue<br>pixel.vue是一个组件（这里放着每个小小像素单位）；<br>的具有<code>color</code>（RGB值）和<code>size</code>（像素大小）的两个数据，当它被点击并触发事件，就是通知其父组件并也将会触发一个事件。</li>
+<li>canvas.vue<br>是一个基于具有每个像素的颜色的二维数组初始化像素分量的容器。</li>
+</ul>
+<p><img src="https://github.com/itemsets/vue2-pixel-art/raw/master/image/3.png" alt=""></p>
+<h3 id="pixel-vue"><a href="#pixel-vue" class="headerlink" title="pixel.vue"></a>pixel.vue</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"l-pixel"</span> <span class="attr">:style</span>=<span class="string">"pixelStyle"</span> @<span class="attr">click</span>=<span class="string">"onPixelClick"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        <span class="attr">props</span>: &#123; <span class="comment">// could be "props: ['color', 'size']" if there no need for "type" and "required".</span></div><div class="line">            color: &#123;</div><div class="line">                <span class="comment">// RGB color - i.e. "255, 255, 255"</span></div><div class="line">                <span class="comment">// applied in "pixelStyle()" computed data</span></div><div class="line">                type: <span class="built_in">String</span>,</div><div class="line">                <span class="attr">required</span>: <span class="literal">true</span>,</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">size</span>: &#123;</div><div class="line">                <span class="attr">type</span>: <span class="built_in">String</span>,</div><div class="line">                <span class="attr">required</span>: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">computed</span>: &#123;</div><div class="line">            pixelStyle() &#123; <span class="comment">// style binding in template</span></div><div class="line">                <span class="keyword">return</span> &#123;</div><div class="line">                    <span class="string">'background-color'</span>: <span class="string">`rgb(<span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>)`</span>, <span class="comment">// this.color is "color" in "props"</span></div><div class="line">                    <span class="string">'width'</span>: <span class="keyword">this</span>.size,</div><div class="line">                    <span class="string">'height'</span>: <span class="keyword">this</span>.size</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">methods</span>: &#123;</div><div class="line">            onPixelClick() &#123;  <span class="comment">// click event handler</span></div><div class="line">                <span class="keyword">this</span>.$emit(<span class="string">'pixel-click'</span>, <span class="keyword">this</span>.color)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></div><div class="line">    .l-pixel &#123;</div><div class="line">        display: inline-block;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>.vue</code> 文件可以包含<code>template</code>模板、JavaScript和CSS样式块，因此组件的所有必需代码都可以存在于单个文件中。</p>
+<p>在script标签中，color(background color)和size(pixel size)是组件初始化时传递的必需属性（props）。</p>
+<p>如果没有必要指定type，并required不在props有要求，那它可以简化为props: [‘color’, ‘size’]。属性的值应用于pixelStyle()计算的属性，该属性绑定到div.style。</p>
+<p>如果color属性值更改，它将通过计算属性传播到模板，并且div.l-pixel将更新背景。v-bind:（完整语法）或 :（简写）用于绑定模板中的属性或数据。传播是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">color change in canvas.vue &gt;&gt;&gt; &quot;color&quot; in &quot;props&quot; in pixel.vue &gt;&gt;&gt; &quot;pixelStyle()&quot; in &quot;computed&quot; &gt;&gt;&gt; style attribute of &quot;div.l-pixel&quot; in &quot;&lt;template&gt;&quot;</div></pre></td></tr></table></figure>
+<p>v-on:（完整语法）或@（简写）用于绑定事件处理程序，并且click方法中div.l-pixel绑定的click事件onPixelClick。</p>
+<p>该方法将pixel-click使用其颜色信息发布事件，画布组件将侦听该颜色信息。</p>
+<h3 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</div><div class="line"><span class="keyword">import</span> NCanvas <span class="keyword">from</span> <span class="string">'canvas'</span>;</div><div class="line"></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">    <span class="attr">components</span>: &#123;NCanvas&#125;,</div><div class="line">    <span class="attr">el</span>: <span class="string">'#main-canvas'</span>,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;n-canvas :pixel-data="pixelData" :colors="colors" background="rgb(229, 230, 232)"&gt;&lt;/n-canvas&gt;'</span>,</div><div class="line">    data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">pixelData</span>: <span class="literal">null</span>,</div><div class="line">            <span class="attr">colors</span>: <span class="literal">null</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    created() &#123;</div><div class="line">        <span class="keyword">const</span> C = <span class="string">"C"</span>;        <span class="comment">//Hat &amp; Shirt</span></div><div class="line">        <span class="keyword">const</span> B = <span class="string">"B"</span>;     <span class="comment">//Brown Hair &amp; Boots</span></div><div class="line">        <span class="keyword">const</span> S = <span class="string">"S"</span>;  <span class="comment">//Skin Tone</span></div><div class="line">        <span class="keyword">const</span> O = <span class="string">"O"</span>;      <span class="comment">//Blue Overalls</span></div><div class="line">        <span class="keyword">const</span> Y = <span class="string">"Y"</span>;    <span class="comment">//Yellow Buckles</span></div><div class="line">        <span class="keyword">const</span> W = <span class="string">"W"</span>;  <span class="comment">//White Gloves</span></div><div class="line">        <span class="keyword">const</span> _ = <span class="string">"_"</span>;</div><div class="line">        <span class="keyword">this</span>.pixelData = [</div><div class="line">            [_, _, _, _, _, _, _, _, _, _, _, _, _, _],</div><div class="line">            [_, _, _, _, C, C, C, C, C, _, _, _, _, _],</div><div class="line">            [_, _, _, C, C, C, C, C, C, C, C, C, _, _],</div><div class="line">            [_, _, _, B, B, B, S, S, B, S, _, _, _, _],</div><div class="line">            [_, _, B, S, B, S, S, S, B, S, S, S, _, _],</div><div class="line">            [_, _, B, S, B, B, S, S, S, B, S, S, B, _],</div><div class="line">            [_, _, B, B, S, S, S, S, B, B, B, B, _, _],</div><div class="line">            [_, _, _, _, S, S, S, S, S, S, S, _, _, _],</div><div class="line">            [_, _, _, C, C, O, C, C, C, C, _, _, _, _],</div><div class="line">            [_, _, C, C, C, O, C, C, O, C, C, C, _, _],</div><div class="line">            [_, C, C, C, C, O, O, O, O, C, C, C, C, _],</div><div class="line">            [_, W, W, C, O, Y, O, O, Y, O, C, W, W, _],</div><div class="line">            [_, W, W, W, O, O, O, O, O, O, W, W, W, _],</div><div class="line">            [_, W, W, O, O, O, O, O, O, O, O, W, W, _],</div><div class="line">            [_, _, _, O, O, O, _, _, O, O, O, _, _, _],</div><div class="line">            [_, _, B, B, B, _, _, _, _, B, B, B, _, _],</div><div class="line">            [_, B, B, B, B, _, _, _, _, B, B, B, B, _]];</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.colors = &#123;</div><div class="line">            [C]: <span class="string">"255, 0, 0"</span>,</div><div class="line">            [B]: <span class="string">"100, 50, 0"</span>,</div><div class="line">            [S]: <span class="string">"255, 200, 150"</span>,</div><div class="line">            [O]: <span class="string">"0, 0, 255"</span>,</div><div class="line">            [Y]: <span class="string">"255, 255, 0"</span>,</div><div class="line">            [W]: <span class="string">"255, 255, 255"</span>,</div><div class="line">            [_]: <span class="string">"229, 230, 232"</span>&#125;;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>像素初始化的代码写在canvas.vue组件里，在这里，我们可以看到为canvas.vue属性提供的数据。this.pixelData包含任意颜色的像素名称，this.colors是包含RGB值的颜色字典（JavaScript对象）。（可以通过创建class Color，包含颜色名称和RGB信息来修改）。</p>
+<h3 id="canvas-vue"><a href="#canvas-vue" class="headerlink" title="canvas.vue"></a>canvas.vue</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"l-canvas-container"</span> <span class="attr">:style</span>=<span class="string">"&#123;background: background&#125;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(row, rowIndex) in pixelData"</span> <span class="attr">:key</span>=<span class="string">"rowIndex"</span> <span class="attr">:style</span>=<span class="string">"&#123;height: pixelSize&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">n-pixel</span> <span class="attr">v-for</span>=<span class="string">"(col, colIndex) in row"</span> <span class="attr">:key</span>=<span class="string">"colIndex"</span> <span class="attr">:color</span>=<span class="string">"colors[col]"</span></span></div><div class="line">                     <span class="attr">:size</span>=<span class="string">"pixelSize"</span> @<span class="attr">pixel-click</span>=<span class="string">"onPixelClick"</span>&gt;</div><div class="line">            <span class="tag">&lt;/<span class="name">n-pixel</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"></div><div class="line">    <span class="keyword">import</span> NPixel <span class="keyword">from</span> <span class="string">'pixel'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        <span class="attr">components</span>: &#123;NPixel&#125;,</div><div class="line">        <span class="attr">props</span>: &#123;</div><div class="line">            <span class="attr">pixelData</span>: &#123;<span class="attr">type</span>: <span class="built_in">Array</span>, <span class="attr">required</span>: <span class="literal">true</span>&#125;,</div><div class="line">            <span class="attr">colors</span>: &#123;<span class="attr">type</span>: <span class="built_in">Object</span>, <span class="attr">required</span>: <span class="literal">true</span>&#125;,</div><div class="line">            <span class="attr">pixelSize</span>: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">default</span>: <span class="string">'20px'</span>&#125;,</div><div class="line">            <span class="attr">background</span>: &#123;<span class="attr">type</span>: <span class="built_in">String</span>, <span class="attr">default</span>: <span class="string">'white'</span>&#125;</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">methods</span>: &#123;</div><div class="line">            onPixelClick(color) &#123;</div><div class="line">                <span class="keyword">let</span> newColor = <span class="keyword">this</span>.getRandomColor();</div><div class="line">                <span class="keyword">let</span> colors = <span class="keyword">this</span>.colors;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">let</span> c <span class="keyword">in</span> colors) &#123;</div><div class="line">                    <span class="keyword">if</span> (colors[c] === color) &#123;</div><div class="line">                        colors[c] = newColor;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;,</div><div class="line">            getRandomColor() &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.getRandom() + <span class="string">', '</span> + <span class="keyword">this</span>.getRandom() + <span class="string">', '</span> + <span class="keyword">this</span>.getRandom();</div><div class="line">            &#125;,</div><div class="line">            getRandom() &#123;</div><div class="line">                <span class="keyword">return</span> <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">256</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></div><div class="line">    .l-canvas-container &#123;</div><div class="line">        background: rgb(229, 230, 232);</div><div class="line">        width: 280px;</div><div class="line">        margin: 0 auto;</div><div class="line">        margin-top: 50px;</div><div class="line">        height: 340px;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>从main.js中使用了v-for来渲染pixelData。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"(row, rowIndex) in pixelData"</span> <span class="attr">:key</span>=<span class="string">"rowIndex"</span> <span class="attr">:style</span>=<span class="string">"&#123;height: pixelSize&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">n-pixel</span> <span class="attr">v-for</span>=<span class="string">"(col, colIndex) in row"</span> <span class="attr">:key</span>=<span class="string">"colIndex"</span> <span class="attr">:color</span>=<span class="string">"colors[col]"</span></span></div><div class="line">             <span class="attr">:size</span>=<span class="string">"pixelSize"</span> @<span class="attr">pixel-click</span>=<span class="string">"onPixelClick"</span>&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">n-pixel</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>pixel注册的组件component: { NPixel }，等同于components: {‘n-pixel’: NPixel} ，并且前缀n-用于防止组件名称冲突，以防万一pixel已经注册为全局组件。</p>
+<p>在n-pixel中的v-for，col是颜色名称（即，“C”，“_”），其是来自main.js和  :color=”colors[col]”发送一个RGB值（即“255，255，255”），以一个pixel组件。colIndex是当前项目（0，1，2，…）的索引。它被传递给key属性，Vue.js需要一个唯一的值v-for 。</p>
+<p>@pixel-click=”onPixelClick”pixel-click从pixel组件侦听事件并onPixelClick更改字典中的颜色（JavaScript对象，this.colors 而不是遍历整个二维数组this.pixelData ，并通过反应性，像素的背景颜色更新！</p>
+<p><img src="https://github.com/itemsets/vue2-pixel-art/raw/master/image/4.png" alt=""></p>
+<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>如果您想进一步探索Vue.js，我建议您继续阅读<a href="https://vuejs.org/v2/guide/" target="_blank" rel="external">他们的文章</a>，甚至可以去看官方api并且自己动手写更多东西。还有一个很不错的免费系列视频 - <a href=""></a>学习拉拉斯卡特的<a href="https://laracasts.com/series/learn-vue-2-step-by-step" target="_blank" rel="external"> Learn Vue 2: Step By Step（Vue 2：一步一步）</a>。</p>
+<p>在我看来，使用Vue.js来编写一些小应用程序来更好地了解库或框架，这样对你很有帮助的。您可以找到一个有趣的Demo或将您以前的代码的一部分转换为新的库。在你提炼了自己的代码之后，您会发现不同库或框架转换并非是件容易的事情，尤其对比了它们的优点和缺点通常不是一下子就能理清楚的。</p>
+<p>加油！！！！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/09/02/allweekly-cn/" rel="next" title="国内前端周刊或专题-值得你收藏两下">
+                <i class="fa fa-chevron-left"></i> 国内前端周刊或专题-值得你收藏两下
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/09/05/Building-a-Maybe-in-JavaScript/" rel="prev" title="尝试在JavaScript中构建一个"Maybe"检测器">
+                尝试在JavaScript中构建一个"Maybe"检测器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/03/vue-pixel-art/"
+           data-title="Vue.js快速介绍-超级马里奥像素艺术" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2017/09/03/vue-pixel-art/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆器</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/bluezhan" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/lanryzhan" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#构建两个Vue组件"><span class="nav-number">1.</span> <span class="nav-text">构建两个Vue组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pixel-vue"><span class="nav-number">2.</span> <span class="nav-text">pixel.vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#main-js"><span class="nav-number">3.</span> <span class="nav-text">main.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas-vue"><span class="nav-number">4.</span> <span class="nav-text">canvas.vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后续"><span class="nav-number">5.</span> <span class="nav-text">后续</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

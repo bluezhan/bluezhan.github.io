@@ -1,0 +1,773 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="瞎逛medium瞎搞，其实也没什么的。真的…原文翻译出处：How I failed to replicate an $86 million project in 1 line of code
+
+最近被澳大利亚一个8600万的项目被程序猿几行代码刷屏了；简直就是为了搞事。
+相关链接：
+
+How I replicated an $86 million project in 57 lines of c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本人未能在一行代码中搞定一个8600万美元的项目">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2017/09/08/86-million-project-in-57-lines-of-code/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="瞎逛medium瞎搞，其实也没什么的。真的…原文翻译出处：How I failed to replicate an $86 million project in 1 line of code
+
+最近被澳大利亚一个8600万的项目被程序猿几行代码刷屏了；简直就是为了搞事。
+相关链接：
+
+How I replicated an $86 million project in 57 lines of c">
+<meta property="og:image" content="https://github.com/itemsets/vue2/raw/master/docs/img/nihai.png">
+<meta property="og:image" content="https://github.com/itemsets/vue2/raw/master/docs/img/how-1.png">
+<meta property="og:image" content="https://github.com/itemsets/vue2/raw/master/docs/img/how-2.jpeg">
+<meta property="og:image" content="https://github.com/itemsets/vue2/raw/master/docs/img/how-3.jpeg">
+<meta property="og:image" content="https://github.com/itemsets/vue2/raw/master/docs/img/how-4.jpeg">
+<meta property="og:updated_time" content="2017-09-09T14:15:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="本人未能在一行代码中搞定一个8600万美元的项目">
+<meta name="twitter:description" content="瞎逛medium瞎搞，其实也没什么的。真的…原文翻译出处：How I failed to replicate an $86 million project in 1 line of code
+
+最近被澳大利亚一个8600万的项目被程序猿几行代码刷屏了；简直就是为了搞事。
+相关链接：
+
+How I replicated an $86 million project in 57 lines of c">
+<meta name="twitter:image" content="https://github.com/itemsets/vue2/raw/master/docs/img/nihai.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 本人未能在一行代码中搞定一个8600万美元的项目 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                本人未能在一行代码中搞定一个8600万美元的项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-08T11:50:53+08:00" content="2017-09-08">
+              2017-09-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/09/08/86-million-project-in-57-lines-of-code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/08/86-million-project-in-57-lines-of-code/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>瞎逛medium瞎搞，其实也没什么的。真的…<br>原文翻译出处：<a href="https://medium.com/@ryanfb/how-i-failed-to-replicate-an-86-million-project-in-1-line-of-code-615048a1f9d0" target="_blank" rel="external">How I failed to replicate an $86 million project in 1 line of code</a></p>
+</blockquote>
+<p>最近被澳大利亚一个8600万的项目被程序猿几行代码刷屏了；简直就是为了搞事。</p>
+<p>相关链接：</p>
+<ul>
+<li><a href="https://medium.freecodecamp.org/how-i-replicated-an-86-million-project-in-57-lines-of-code-277031330ee9" target="_blank" rel="external">How I replicated an $86 million project in 57 lines of code</a></li>
+<li><a href="https://github.com/openalpr/openalpr">Automatic License Plate Recognition library</a></li>
+<li><a href="http://www.flocksafety.com/" target="_blank" rel="external">Flock is your virtual security guard</a></li>
+<li><a href="https://medium.com/@ryanfb/how-i-failed-to-replicate-an-86-million-project-in-1-line-of-code-615048a1f9d0" target="_blank" rel="external">How I failed to replicate an $86 million project in 1 line of code</a></li>
+<li><a href="https://news.ycombinator.com/item?id=15158811" target="_blank" rel="external">Hacker News-How I failed to replicate an $86M project in 1 line of code</a></li>
+<li>乱入：<a href="https://www.resavr.com/comment/how-replicated-an-86-9466504" target="_blank" rel="external">I have a funny story from Finland</a></li>
+<li>乱入：<a href="https://inside.com/campaigns/inside-dev-2017-09-03-3154/sections/development-dregs-17344" target="_blank" rel="external">Inside Dev (Sep 3rd, 2017)</a></li>
+<li>乱入：<a href="https://baijia.baidu.com/s?id=1576951828995877033&amp;wfr=pc&amp;fr=app_lst" target="_blank" rel="external">谷歌无人车之父Sebastian Thrun：摄像头才是无人驾驶最好的方式</a></li>
+</ul>
+<p>上文有翻译：</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/iwPI8g2JwabwiCO8kfw8Hw" target="_blank" rel="external">【57行代码搞定8600万美元项目】用开源工具DIY车牌识别系统</a></li>
+<li><a href="https://yq.aliyun.com/articles/199312" target="_blank" rel="external">57行价值八千万美元的车牌识别代码</a></li>
+</ul>
+<p><img src="https://github.com/itemsets/vue2/raw/master/docs/img/nihai.png" alt=""></p>
+<a id="more"></a>
+<p>当你使用现有的开源技术来进行实验时，仅仅只是为了能看到结果的话，那就不错的。</p>
+<p>在Medium上的一篇文章“我如何以57行代码复制8600万美元的项目”，已经在过去几天激烈地进行了几轮，描述了为澳大利亚维多利亚警察局开发的自动牌照识别系统（ALPR）系统是否可以使用开放式来源ALPR系统OpenALPR。这基本上是无处不在的套路文章标题“为什么这需要多少多少美金？我可以在一个周末用代码就搞定了！”，对任何具备基础逻辑的（或复杂的）科技推导出的结论和对之评论。</p>
+<p>然而，由于OpenALPR是免费且开源的，所以我们可以测试这个说法的合理性。</p>
+<p>但我们将OpenALPR跑在本地电脑上的时候就要忽略一些无鬼用的东西，​​直接跳到我们试图从dashcam视频中自动将牌照识别出来。对于这些我们要测试视频，当初我选择了“Drive around Bendigo(围绕本迪戈驾驶)”，这是一个惊人的27分钟的YouTube视频，并且是很有代表性的，因为它的1080p车载镜头是非常明确的，而且也在我们围绕系统部署的区域里。从youtube下载后，我将它加入到OpenALPR中来，并运行了命令行。 <code>time alpr --clock -n 1 &#39;Drive around Bendigo-hrD75ebjCms.mp4&#39; &gt; bendigo.txt</code>…</p>
+<p><img src="https://github.com/itemsets/vue2/raw/master/docs/img/how-1.png" alt="OpenALPR的处理时间，让人很惊讶"></p>
+<p>嗯；好好好，问题来了。我在处理这27分钟视频里使用3.5GHz Core i7的电脑配置上花费了超过3.5小时，而且不是实时的。铅笔在几个“优化”，还有一些“每个巡逻车超强电脑硬件”我猜。<br>我猜，如果要达到最佳的帧数并读取数据比较靠谱的话，得有部配置超腻害的电脑来跑。</p>
+<p>无论如何，总算出了结果！常言道，加快CPU的周期才能更容易更快地得到我们想要的数据。我们将结果过滤到只有潜在的车牌命名为<code>bendigo.txt</code>的文件里；每条数据组中单词，它匹配起来会达到高达6,137个相识的词语中（如果我们从中再过滤掉一些唯一的单词，则大概为1,653）。不错！很好，差不多了。这似乎还是很多啊。让我们来仔细看看先：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">fgrep confidence bendigo.txt| cut -d&apos; &apos; -f 6 | sort -u | shuf | head</div><div class="line">SURANT</div><div class="line">1IR9DT</div><div class="line">111DIDI</div><div class="line">ARR0W1</div><div class="line">I311</div><div class="line">SGRD</div><div class="line">D1R91T</div><div class="line">0DI10D</div><div class="line">II000</div><div class="line">1ID1</div></pre></td></tr></table></figure>
+<p>其中有一些看起来并不是我们想要的。好吧，不过这并没什么大碍，在前面我们在开始部署的代码中提出的“非常直接的代码优先修复”，比如在验证注册号之前采用“只接受大于90%的置信度”。</p>
+<p>运行<code>fgrep &#39;confidence: 9&#39; bendigo.txt | cut -d&#39; &#39; -f 6 | sort -u</code><br>把它切成90%可信度的车牌号码，将它们过滤成唯一的车牌号码，那这样我们得到了些什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">0G700       HERE      M5ER      TUG700    WKX2D2</div><div class="line">0NRED       HM5ER     MP356     TUG70Q    X036</div><div class="line">1HM5ER      IUG700    R1GHT     TUG70U    XP036</div><div class="line">1IR9IT      JG700     R1LV      TUG7Q0    XS036</div><div class="line">1ZZ735      KEEP      SLV522    TZ2735    XSP036</div><div class="line">DH0SAHUT    KX212     SLV52Z    TZZ735    XSP036E</div><div class="line">ERGE        KX2D2     SLV5Z2    UG700     XSPQ36</div><div class="line">ERQGHT      KXZ12     T0G700    UG70U     YLJ641</div><div class="line">G700        LANE      T0G70U    VKX212    YLJ64D</div><div class="line">GR1L        LJ641     T2Z735    WKX212    YLJ64I</div><div class="line">GRILL       LV522     TDG700</div></pre></td></tr></table></figure>
+<p>好的，所以我们还有一些明显的重复和识别错误，大概会在注册验证的时候将会排除这些。不过之后我们把27分钟的视频放到VicRoads网站上校正这些数据时，我们总共得到了7个自动认可并是有效号码。</p>
+<p><img src="https://github.com/itemsets/vue2/raw/master/docs/img/how-2.jpeg" alt="OpenALPR中的少数几个板块在野外正确识别，成功！"></p>
+<p><img src="https://github.com/itemsets/vue2/raw/master/docs/img/how-3.jpeg" alt="那是TUG700还是TDG700在中间？OpenALPR无法决定。两者都是有效的牌号。显然，“YLJ641”不在VicRoads数据库中。"></p>
+<p>我在这里不是故意虚伪的：从OpenALPR过滤器中匹配到“有效”的号码是一个棘手的问题。我鼓励任何人可以去尝试一下，并发布他们的方法和结果。但是，即使将数据过滤到很好的匹配中，基本的问题是OpenALPR在我抛出的每一个视频中都会丢失大量清晰可辨的盘符，并且它一直都是这样去处理的。</p>
+<p><img src="https://github.com/itemsets/vue2/raw/master/docs/img/how-4.jpeg" alt="这个版本在全分辨率视频中非常清晰。OpenALPR在这一帧中识别出一个板，但不正确地识别为“10DID”。"></p>
+<p>我喜欢开源的东西！这里有一个免费的、开放源码、健壮、快速、准确的ALPR系统！这是一个很棒的集成系统，如果这个项目发布之后，任何人使用了他们的开源代码！但OpenALPR还没有去弄这一块。假设现在已经有一个开源的并很完善的解决方案，在上面的每个问题中，当然可能是有了25％的解决方案也好，而这不是仅仅提高了其质量的问题了，更多是在算法和识别技术上了，也可能是硬件的问题，哈哈哈哈。</p>
+<p>这个项目能不到8600万美元吗？也许，可以用OpenALPR作为起点吗？也许，它会实际降低成本吗？谁知道呢：这是也行是一个具有复杂、很有挑战性的需求项目。</p>
+<p>tags: Open Source、Alpr、Computer Vision。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/09/06/allweekly/" rel="next" title="这些国外前端周刊值得你收藏一下">
+                <i class="fa fa-chevron-left"></i> 这些国外前端周刊值得你收藏一下
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/08/86-million-project-in-57-lines-of-code/"
+           data-title="本人未能在一行代码中搞定一个8600万美元的项目" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2017/09/08/86-million-project-in-57-lines-of-code/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆器</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/bluezhan" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/lanryzhan" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

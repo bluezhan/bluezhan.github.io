@@ -1,0 +1,759 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="翻译原文出处：10 JavaScript concepts you need to know for interviews
+
+之前不是闹得沸沸扬扬的大漠穷秋文章《为什么只会Vue的都是前端小白？》；甚至大多数回头看了，也就会jQuery和Vue这两个库；也就大部分在运用着这两个库。我这里不是吐槽和开骂什么的；在之前jQuery年代，很多面试官都会问除了用jQuery来实现，能不能改写原生Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="你需要知道面试中的10个JavaScript概念">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2017/08/25/10-javascript-concepts-you-need-to-know-for-interviews/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="翻译原文出处：10 JavaScript concepts you need to know for interviews
+
+之前不是闹得沸沸扬扬的大漠穷秋文章《为什么只会Vue的都是前端小白？》；甚至大多数回头看了，也就会jQuery和Vue这两个库；也就大部分在运用着这两个库。我这里不是吐槽和开骂什么的；在之前jQuery年代，很多面试官都会问除了用jQuery来实现，能不能改写原生Java">
+<meta property="og:updated_time" content="2017-09-09T14:15:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="你需要知道面试中的10个JavaScript概念">
+<meta name="twitter:description" content="翻译原文出处：10 JavaScript concepts you need to know for interviews
+
+之前不是闹得沸沸扬扬的大漠穷秋文章《为什么只会Vue的都是前端小白？》；甚至大多数回头看了，也就会jQuery和Vue这两个库；也就大部分在运用着这两个库。我这里不是吐槽和开骂什么的；在之前jQuery年代，很多面试官都会问除了用jQuery来实现，能不能改写原生Java">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 你需要知道面试中的10个JavaScript概念 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                你需要知道面试中的10个JavaScript概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-08-25T20:50:53+08:00" content="2017-08-25">
+              2017-08-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/08/25/10-javascript-concepts-you-need-to-know-for-interviews/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/25/10-javascript-concepts-you-need-to-know-for-interviews/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>翻译原文出处：<a href="https://dev.to/arnavaggarwal/10-javascript-concepts-you-need-to-know-for-interviews" target="_blank" rel="external">10 JavaScript concepts you need to know for interviews</a></p>
+</blockquote>
+<p>之前不是闹得沸沸扬扬的大漠穷秋文章《为什么只会Vue的都是前端小白？》；甚至大多数回头看了，也就会jQuery和Vue这两个库；也就大部分在运用着这两个库。我这里不是吐槽和开骂什么的；在之前jQuery年代，很多面试官都会问除了用jQuery来实现，能不能改写原生JavaScript来处理。也大部分人在看jQuery源码，甚至穷出不尽的底层库。</p>
+<h2 id="自我学习"><a href="#自我学习" class="headerlink" title="自我学习"></a>自我学习</h2><p>目前有成千上万的年轻人在学习JavaScript和Web开发，希望获得一份工作。通常，自我学习的年轻人对JavaScript语言本身不够深入了解，在这方面留下了一片空白。</p>
+<p>实际上令人惊讶的是，只需要了解非常小的一部分语言就可以来制作复杂的网页。在自己的网站上创建网站的人往往不太了解JavaScript的基本原理。大多数年轻人基本都是通过Bootstrap、jQuery及插件、Backbone或Angular等库和框架直接就搞定，而且还能构建复杂应用。</p>
+<p>使用基本技能来避免复杂的主题和实现功能是相当容易的。在不理解被复制的代码的情况下，通过依赖<a href="https://stackoverflow.com/" target="_blank" rel="external">Stack Overflow</a>、github等网站放出的demo，甚至一些建站网站来创建自己的网站是比较轻松的。</p>
+<p>如果您想要掌握更多的JavaScript面试相关资讯，请查看“ <a href="https://www.educative.io/collection/5679346740101120/5707702298738688?authorName=Arnav%20Aggarwal" target="_blank" rel="external">提升你的JS：中级JavaScript的权威指南</a>”</p>
+<a id="more"></a>
+<h2 id="面试"><a href="#面试" class="headerlink" title="面试"></a>面试</h2><p>那么问题来了，测试您对JavaScript深浅理解的问题，正是许多科技公司在面试中所要求的。当一个求职者只是刚好能通过面试，但如果不够深入了解该语言的本质，这是很槽糕的。</p>
+<p>以下是Web开发中常见的概念需要重要的，前提是你已经了解了循环、函数和回调等基础知识。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>1、<a href="https://www.educative.io/collection/page/5679346740101120/5707702298738688/5685265389584384/" target="_blank" rel="external">值和引用</a> — 了解对象、数组和函数是通过引用进行复制和传递的；了解原始元素是按值复制和传递的。<br>2、<a href="https://scotch.io/tutorials/understanding-scope-in-javascript#toc-scope-in-javascript" target="_blank" rel="external">作用域</a> — 了解全局作用域，函数作用域和块作用域之间的差异。了解哪些变量在哪里可以用。了解JavaScript引擎如何执行变量查找。新出的ES6语法中申明变量关键字let、const对变量作用域的影响。<br>3、<a href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/" target="_blank" rel="external">变量提升</a> — 了解变量和函数声明被提升到可用范围的顶部；了解函数表达式没有提升。<br>4、<a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/" target="_blank" rel="external">闭包</a> — 知道闭包是指可以访问其他函数作用域内变量的函数。知道这样做可以使我们做什么，例如创建私有变量，动态函数生成等。<br>5、<a href="https://www.educative.io/collection/page/5679346740101120/5707702298738688/5676830073815040" target="_blank" rel="external">this</a> — 知道this的绑定规则。知道它是如何工作的，知道如何找出它在函数中与之相等的，并且知道为什么它是有用的。<br>6、<a href="https://codeburst.io/javascripts-new-keyword-explained-as-simply-as-possible-fec0d87b2741" target="_blank" rel="external">new</a> — 知道new如何与面向对象编程有关，知道使用new调用的函数会发生什么，通过函数的prototype属性了解如何使用new继承生成的对象。<br>7、<a href="https://codeplanet.io/javascript-apply-vs-call-vs-bind/" target="_blank" rel="external">apply，call，bind</a> — 知道这几个函数如何工作的，知道如何使用它们，知道它们做了什么。<br>8、<a href="https://codeburst.io/master-javascript-prototypes-inheritance-d0a9a5a75c4e" target="_blank" rel="external">原型和继承</a> — 了解JavaScript中的继承通过prototype链进行工作，了解如何通过函数和对象设置继承，以及new函数帮我们来实现它。知道<strong>proto</strong>和原型属性是什么以及它们的作用。<br>9、<a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ&amp;t=948s" target="_blank" rel="external">异步JS</a> — 了解事件循环。了解浏览器如何处理用户输入，Web请求和一般事件；知道如何识别并正确实现异步代码。了解JavaScript是异步单线程的。<br>10、<a href="https://www.sitepoint.com/higher-order-functions-javascript/" target="_blank" rel="external">高阶函数</a> — 了解函数是JavaScript中的一级对象，这意味着什么；知道从另一个函数返回函数是完全合法的。了解闭包和高阶函数允许我们使用的情况。</p>
+<h2 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a>更多资源</h2><p>如果上面的知识点包含的链接还不够，那么你可以上其它网站找资源，可以帮助您学习这些概念。</p>
+<p>我个人创建了 <a href="https://www.educative.io/collection/5679346740101120/5707702298738688?authorName=Arnav%20Aggarwal" target="_blank" rel="external">提升你的JS：中级JavaScript的权威指南</a>，以帮助开发者提高他们的知识；它涵盖了所有这些概念和更多。</p>
+<p>这里是我已经阅读或看过的资源，至少有一些可以推荐。</p>
+<ul>
+<li><a href="https://github.com/getify/You-Dont-Know-JS">You Don’t Know JS</a></li>
+<li><a href="http://javascriptissexy.com/16-javascript-concepts-you-must-know-well/" target="_blank" rel="external">JavaScript is Sexy</a></li>
+<li><a href="https://www.javascript.com/resources" target="_blank" rel="external">javascript.com</a></li>
+<li><a href="https://frontendmasters.com/" target="_blank" rel="external">Frontend Masters</a></li>
+<li><a href="http://eloquentjavascript.net/" target="_blank" rel="external">Eloquent JavaScript</a></li>
+</ul>
+<p>Good luck for your interviews!!!!(这句你懂得)</p>
+<p>如果你发现这很有用，就请您点个赞，转发给其他人也看到它（这是博主原话）。</p>
+<p>随时查看我最近的一些写的文章：</p>
+<ul>
+<li><a href="https://www.educative.io/collection/5679346740101120/5707702298738688?authorName=Arnav%20Aggarwal" target="_blank" rel="external">提升你的JS：中级JavaScript的权威指南</a></li>
+<li><a href="https://codeburst.io/what-i-learned-from-attending-a-coding-bootcamp-and-teaching-another-one-65addec715fd" target="_blank" rel="external">我从参加一个编码开机画面中学到的东西，并实现了一个</a></li>
+<li><a href="https://codeburst.io/react-ecosystem-setup-step-by-step-walkthrough-721ff45a7fc1" target="_blank" rel="external">反应生态系统设置 - 分步演练</a></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.zhihu.com/question/34262554" target="_blank" rel="external">你们认为学习JavaScript难点在那里？</a></li>
+<li><a href="http://www.cnblogs.com/fundebug/p/7193369.html" target="_blank" rel="external">10个JavaScript难点</a></li>
+<li><a href="https://segmentfault.com/a/1190000004180569" target="_blank" rel="external">你有必要知道的 25 个 JavaScript 面试题</a></li>
+<li><a href="http://www.cnblogs.com/sharpxiajun/p/4133462.html" target="_blank" rel="external">谈谈javascript语法里一些难点问题（一）</a></li>
+<li><a href="http://www.cnblogs.com/sharpxiajun/p/4133984.html" target="_blank" rel="external">谈谈javascript语法里一些难点问题（二）</a></li>
+<li><a href="http://www.cnblogs.com/sharpxiajun/p/4148932.html" target="_blank" rel="external">javascript技术难点（三）之this、new、apply和call详解</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/07/03/2016-07-03/" rel="next" title="JavaScript数据结构深度剖析(转载)">
+                <i class="fa fa-chevron-left"></i> JavaScript数据结构深度剖析(转载)
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/08/28/4ajaxforvue/" rel="prev" title="Vue.js应用的四种AJAX请求数据模式">
+                Vue.js应用的四种AJAX请求数据模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/25/10-javascript-concepts-you-need-to-know-for-interviews/"
+           data-title="你需要知道面试中的10个JavaScript概念" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2017/08/25/10-javascript-concepts-you-need-to-know-for-interviews/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆器</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/bluezhan" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/lanryzhan" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自我学习"><span class="nav-number">1.</span> <span class="nav-text">自我学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试"><span class="nav-number">2.</span> <span class="nav-text">面试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">3.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多资源"><span class="nav-number">4.</span> <span class="nav-text">更多资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

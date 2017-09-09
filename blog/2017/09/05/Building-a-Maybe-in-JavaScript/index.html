@@ -1,0 +1,776 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="翻译原文出处：Building a Maybe in JavaScript 鄙人翻译略差且略有出入，别见笑。
+
+很多时候我们会碰到：Uncaught TypeError: Cannot read property ‘x’ of undefined（无法读取未定义的属性“x”）。我猜，如果你正好看到这个你以前不单只碰过还历历在目的东西，可能有那么一刻想把显示器给砸了。这里想起了我们尊敬的计算机领域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尝试在JavaScript中构建一个"Maybe"检测器">
+<meta property="og:url" content="https://github.com/bluezhan/bluezhan.github.io.git/2017/09/05/Building-a-Maybe-in-JavaScript/index.html">
+<meta property="og:site_name" content="This's BlueZhan">
+<meta property="og:description" content="翻译原文出处：Building a Maybe in JavaScript 鄙人翻译略差且略有出入，别见笑。
+
+很多时候我们会碰到：Uncaught TypeError: Cannot read property ‘x’ of undefined（无法读取未定义的属性“x”）。我猜，如果你正好看到这个你以前不单只碰过还历历在目的东西，可能有那么一刻想把显示器给砸了。这里想起了我们尊敬的计算机领域">
+<meta property="og:updated_time" content="2017-09-09T14:15:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="尝试在JavaScript中构建一个"Maybe"检测器">
+<meta name="twitter:description" content="翻译原文出处：Building a Maybe in JavaScript 鄙人翻译略差且略有出入，别见笑。
+
+很多时候我们会碰到：Uncaught TypeError: Cannot read property ‘x’ of undefined（无法读取未定义的属性“x”）。我猜，如果你正好看到这个你以前不单只碰过还历历在目的东西，可能有那么一刻想把显示器给砸了。这里想起了我们尊敬的计算机领域">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 尝试在JavaScript中构建一个"Maybe"检测器 | This's BlueZhan </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">This's BlueZhan</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">不在公司，就在去公司的路上</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                尝试在JavaScript中构建一个"Maybe"检测器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-05T20:50:53+08:00" content="2017-09-05">
+              2017-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/09/05/Building-a-Maybe-in-JavaScript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/05/Building-a-Maybe-in-JavaScript/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>翻译原文出处：<a href="http://developingthoughts.co.uk/building-a-maybe-in-javascript/" target="_blank" rel="external">Building a Maybe in JavaScript</a><br> 鄙人翻译略差且略有出入，别见笑。</p>
+</blockquote>
+<p>很多时候我们会碰到：Uncaught TypeError: Cannot read property ‘x’ of undefined（无法读取未定义的属性“x”）。<br>我猜，如果你正好看到这个你以前不单只碰过还历历在目的东西，可能有那么一刻想把显示器给砸了。<br>这里想起了我们尊敬的计算机领域的爵士——托尼·霍尔；他在Infoq办的大会演讲时，用到的主题是：“Null References: The Billion Dollar Mistake”（Null 引用：一个十亿美元级别的错误），讲演摘要中这样写的：<br>“我把Null引用称为自己的十亿美元错误。它的发明是在1965年，那时我用一个面向对象语言( ALGOL W )设计了第一个全面的引用类型系统。我的目的是确保所有引用的使用都是绝对安全的，编译器会自动进行检查。但是我未能抵御住诱惑，加入了Null引用，仅仅是因为实现起来非常容易。它导致了数不清的错误、漏洞和系统崩溃，可能在之后40年中造成了十亿美元的损失。近年来，大家开始使用各种程序分析程序，比如微软的PREfix和PREfast来检查引用，如果存在为非Null的风险时就提出警告。更新的程序设计语言比如Spec#已经引入了非Null引用的声明。这正是我在1965年拒绝的解决方案。”</p>
+<a id="more"></a>
+<h2 id="那十亿美元级别的错误"><a href="#那十亿美元级别的错误" class="headerlink" title="那十亿美元级别的错误"></a>那十亿美元级别的错误</h2><p>幸运的是，我们可以使用一些功能性的编程技术，以清洁、简洁和可靠的方式缓解这带来疼痛。让我们想象一下，我们要从下面的对象中提取属性“c”的值，并附加字符串“is great”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = &#123;</div><div class="line">    <span class="attr">b</span>: &#123;</div><div class="line">        <span class="attr">c</span>: <span class="string">"fp"</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>我们使用的简单方法可能是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> appendString = <span class="function">(<span class="params">obj</span>) =&gt;</span></div><div class="line">    obj.b.c + <span class="string">" is great"</span>;</div><div class="line">    </div><div class="line">appendString(a);</div></pre></td></tr></table></figure>
+<p>这样的写法很棒，但可悲的是<code>a</code>对象并非是一成不变的。因此，我们收回的数据有时会采取到以下的形式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = &#123;</div><div class="line">    <span class="attr">b</span>: &#123;&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> a = &#123;&#125;;</div></pre></td></tr></table></figure>
+<p>当这个时候我们调用了appendString函数时，整个宇宙将会爆炸的…</p>
+<h2 id="无法读取未定义的属性“c”"><a href="#无法读取未定义的属性“c”" class="headerlink" title="无法读取未定义的属性“c”"></a>无法读取未定义的属性“c”</h2><p>这个时候可能要我们对函数的传参进行空检查：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> appendString = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (!obj || !obj.b || !obj.b.c || !) <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> obj.b.c + <span class="string">" is great"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是有效的，但它看起来很丑陋和很容易出错。我们必须对传参进行每种类型的对象定义特定的（正确的）空检查，这是不是很有趣（复杂）。<br>哈哈哈，这个时候可能<code>Maybe</code>就派得上场了。</p>
+<h2 id="Maybe的基本用法"><a href="#Maybe的基本用法" class="headerlink" title="Maybe的基本用法"></a><code>Maybe</code>的基本用法</h2><p>基本上，我们都会将要构建的对象封装其值可能为null的概念，并且考虑到随之而来的复杂性。在学习<code>Elm</code>(一门专注于Web前端的纯函数式语言)之后，我会在Maybe上的封装了两个概念状态<code>Maybe.just</code>和<code>Maybe.nothing</code>。对于初学者，我们简单地定义一个返回一个布尔值的<code>isNothing</code>方法，告诉我们Maybe是否不包含任何内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> isNullOrUndef = <span class="function">(<span class="params">value</span>) =&gt;</span> value === <span class="literal">null</span> || <span class="keyword">typeof</span> value === <span class="string">"undefined"</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> maybe = <span class="function">(<span class="params">value</span>) =&gt;</span> (&#123;</div><div class="line">    <span class="attr">isNothing</span>: <span class="function"><span class="params">()</span> =&gt;</span> isNullOrUndef(value)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>甚至使用一个简单的工厂函数来创建我们的<code>Maybe</code> - 考虑到往后可能会添加更多的方法，我们将使用一个对象来定义它：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Maybe = &#123;</div><div class="line">    <span class="attr">just</span>: maybe,</div><div class="line">    <span class="attr">nothing</span>: <span class="function"><span class="params">()</span> =&gt;</span> maybe(<span class="literal">null</span>)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>所以现在我们可以这样做：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> maybeNumberOne = Maybe.just(<span class="string">"a value"</span>);</div><div class="line"><span class="keyword">const</span> maybeNumberTwo = Maybe.nothing();</div><div class="line"></div><div class="line">maybeNumberOne.isNothing(); <span class="comment">// false</span></div><div class="line">maybeNumberTwo.isNothing(); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>一切都很好，但到目前为止还不是很实用。编程是关于转换数据的，所以我们需要一种改变我们的<code>Maybe</code>的方法 - 一个<code>map</code>函数。这个<code>map</code>函数将使用一个表示我们希望进行转换的函数参数，并返回一个包含转换结果的新参数。重要的是，如果<code>maybe</code>不包含任何内容，那么该函数将不会被应用，我们将返回一个新的<code>maybe.nothing</code>方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> maybe = <span class="function">(<span class="params">value</span>) =&gt;</span> (&#123;</div><div class="line">    <span class="attr">isNothing</span>: <span class="function"><span class="params">()</span> =&gt;</span> isNullOrUndef(value),</div><div class="line">    <span class="attr">map</span>: <span class="function">(<span class="params">transformer</span>) =&gt;</span> !isNullOrUndef(value) ? Maybe.just(transformer(value)) : Maybe.nothing()</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>现在我们可以这样来调用<code>maybe</code>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> maybeOne = Maybe.just(<span class="number">5</span>);</div><div class="line">maybeOne.map(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>); <span class="comment">// Maybe.just(6);</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> maybeTwo = Maybe.nothing();</div><div class="line">maybeTwo.map(<span class="function"><span class="params">x</span> =&gt;</span> x + <span class="number">1</span>) <span class="comment">// Maybe.nothing();</span></div></pre></td></tr></table></figure>
+<p>关键一点的是<code>maybe.map</code>返回一个新的<code>maybe</code>，所以我们可以将这些操作链接在一起。回到我们现在可以做的最初的问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = &#123;</div><div class="line">    <span class="attr">b</span>: &#123;</div><div class="line">        <span class="attr">c</span>: <span class="string">"fp"</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> maybeA = Maybe.just(a)</div><div class="line">    .map(<span class="function"><span class="params">a</span> =&gt;</span> a.b)</div><div class="line">    .map(<span class="function"><span class="params">b</span> =&gt;</span> b.c)</div><div class="line">    .map(<span class="function"><span class="params">c</span> =&gt;</span> c + <span class="string">" is great!"</span>);</div></pre></td></tr></table></figure>
+<p>这里的好处是，如果链中的任何步骤返回null，我们仍然会得到结果Maybe.nothing的结果，而不是运行时错误。</p>
+<p>好了，在<code>Github</code>上面有个<code>maybe.js</code>库: <a href="https://github.com/stewart/maybe.js">A Maybe monad implementation in JavaScript</a>:   </p>
+<p>它比<code>Haskell</code>的实现更加灵活，而且还附带了一些额外的功能，考虑到<br>JavaScript的类型系统限制和语言的一般灵活性。</p>
+<h2 id="Point-free-链式函数"><a href="#Point-free-链式函数" class="headerlink" title="Point-free 链式函数"></a>Point-free 链式函数</h2><p>如果你看过我以前发布的文章<a href="http://developingthoughts.co.uk/curried-functions-and-point-free-programming/" target="_blank" rel="external">柯里化函数</a>，那么你就会想我们可以弄得比这更好。我们可以创建从对象中提取命名属性的高阶函数，以及用于追加字符串：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> prop = <span class="function">(<span class="params">propName</span>) =&gt;</span> (obj) =&gt; obj[propName];</div><div class="line"><span class="keyword">const</span> append = <span class="function">(<span class="params">appendee</span>) =&gt;</span> (appendix) = appendee + appendix;</div></pre></td></tr></table></figure>
+<p>这里可以参考知乎上的<a href="https://zhuanlan.zhihu.com/p/21714695" target="_blank" rel="external">JavaScript函数式编程（一）</a>里面的知识点。</p>
+<p>所以现在我们可以在我们的<code>map</code>链式中使用这个功能：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = &#123;</div><div class="line">    <span class="attr">b</span>: &#123;</div><div class="line">        <span class="attr">c</span>: <span class="string">"fp"</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> maybeA = Maybe.just(a)</div><div class="line">    .map(prop(<span class="string">"b"</span>))</div><div class="line">    .map(prop(<span class="string">"c"</span>))</div><div class="line">    .map(append(<span class="string">" is great!"</span>));</div></pre></td></tr></table></figure>
+<p>好了，我们现在终于到了这一步， 我们已经处理了空检查，并将其重构为<code>point-free</code>形式。接下来需要做的就是使逻辑可重用性；我们想要的是能够将我们的功能传递给一个功能，并应用所有步骤，以便我们可以在许多不同的<code>Maybe</code>上重新使用提取器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> extractor = <span class="comment">// what we're about to make</span></div><div class="line"> extractor(Maybe.just(a)); <span class="comment">// Maybe.just("fp is great")</span></div></pre></td></tr></table></figure>
+<p>我们需要的是一个需要我们的步骤的函数，并且每个步骤依次调用我们<code>Maybe.map</code>方法。我们将调用函数<code>Maybe.chain</code>，我们可以用reducer来实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Maybe = &#123;</div><div class="line">    <span class="attr">just</span>: maybe,</div><div class="line">    <span class="attr">nothing</span>: <span class="function"><span class="params">()</span> =&gt;</span> maybe(<span class="literal">null</span>),</div><div class="line">    <span class="attr">chain</span>: <span class="function">(<span class="params">...fns</span>) =&gt;</span> (input) =&gt; fns.reduce(<span class="function">(<span class="params">output, curr</span>) =&gt;</span> output.map(curr), input)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>我们现在可以构建一个可以应用于<code>maybe</code>的可用功能：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> appendToC = Maybe.chain(</div><div class="line">    prop(<span class="string">"b"</span>),</div><div class="line">    prop(<span class="string">"c"</span>),</div><div class="line">    append(<span class="string">" is great!"</span>)</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>并将其用于各种输入：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> goodInput = Maybe.just(&#123;</div><div class="line">    <span class="attr">b</span>: &#123;</div><div class="line">        <span class="attr">c</span>: <span class="string">"fp"</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> badInput = Maybe.just(&#123;&#125;);</div><div class="line"></div><div class="line">appendToC(goodInput); <span class="comment">// Maybe.just("fp is great!")</span></div><div class="line">appendToC(badInput); <span class="comment">// Maybe.nothing()</span></div></pre></td></tr></table></figure>
+<p>虽然我在学习<code>Elm</code>之前不习惯<code>Maybe</code>的价值观概念，但是他们在JavaScript中不想落后啊。如果我们简简单单地去使用它，就只会使用到基础方法而已，所以我们要在它的基础上添加更多的功能函数。所以我将在稍后阅读关于使用<code>Maybe</code>的后续文章。</p>
+<p>：：完毕：：</p>
+<h2 id="更多阅读"><a href="#更多阅读" class="headerlink" title="更多阅读"></a>更多阅读</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000005701562" target="_blank" rel="external">Elm入门实践（一）——基础篇</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/02/fp-tutorial.html" target="_blank" rel="external">函数式编程入门教程</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21714695" target="_blank" rel="external">JavaScript函数式编程（一）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21926955" target="_blank" rel="external">JavaScript函数式编程（二）</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22094473" target="_blank" rel="external">JavaScript函数式编程（三）</a></li>
+<li><a href="http://blog.jobbole.com/77078/" target="_blank" rel="external">函数式JavaScript（2）：如何打造“函数式”编程语言？</a></li>
+<li><a href="https://github.com/stewart/maybe.js">A Maybe monad implementation in JavaScript</a></li>
+<li><a href="http://reactivex.io/learnrx/" target="_blank" rel="external">Functional Programming in Javascript</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/前端/" rel="tag">#前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/09/03/vue-pixel-art/" rel="next" title="Vue.js快速介绍-超级马里奥像素艺术">
+                <i class="fa fa-chevron-left"></i> Vue.js快速介绍-超级马里奥像素艺术
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/09/06/allweekly/" rel="prev" title="这些国外前端周刊值得你收藏一下">
+                这些国外前端周刊值得你收藏一下 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/09/05/Building-a-Maybe-in-JavaScript/"
+           data-title="尝试在JavaScript中构建一个"Maybe"检测器" data-url="https://github.com/bluezhan/bluezhan.github.io.git/blog/2017/09/05/Building-a-Maybe-in-JavaScript/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/images/avatar.jpg"
+               alt="蓝少" />
+          <p class="site-author-name" itemprop="name">蓝少</p>
+          <p class="site-description motion-element" itemprop="description">一席之地，万物皆器</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mynameisblue.com" target="_blank" title="蓝少">
+                  
+                    <i class="fa fa-fw fa-coffee"></i>
+                  
+                  蓝少
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/bluezhan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/bluezhan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-lemon-o"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/97787d2df43f/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/bluezhan" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/lanryzhan" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#那十亿美元级别的错误"><span class="nav-number">1.</span> <span class="nav-text">那十亿美元级别的错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无法读取未定义的属性“c”"><span class="nav-number">2.</span> <span class="nav-text">无法读取未定义的属性“c”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maybe的基本用法"><span class="nav-number">3.</span> <span class="nav-text">Maybe的基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Point-free-链式函数"><span class="nav-number">4.</span> <span class="nav-text">Point-free 链式函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多阅读"><span class="nav-number">5.</span> <span class="nav-text">更多阅读</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright-info">
+    <p>“如果你擅长什么，就不能让它免费起来。”——从不做免费的<br />(但这并不意味着你一直做你自己)</p>
+</div>
+<div class="copyright" >
+  
+  &copy;  2014 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝少</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"bluezhan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
